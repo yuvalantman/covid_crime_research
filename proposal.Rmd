@@ -1,0 +1,38 @@
+---
+title: "Project proposal"
+author: "Team name"
+output: pdf_document
+---
+
+```{r load-packages, message = FALSE}
+library(knitr)
+library(tidyverse)
+library(broom)
+library(htmltools)
+```
+
+```{r setup, include = FALSE}
+opts_chunk$set(echo=FALSE) # hide source code in the document
+```
+
+## 1. Introduction
+
+## 2. Data
+
+## 3. Preliminary results
+
+## 4. Data analysis plan
+
+## Appendix
+
+### Data README
+
+```{r include_data_readme, comment=''}
+cat(readLines('../data/README.md'), sep = '\n')
+```
+
+### Source code
+
+```{r, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+
+```
