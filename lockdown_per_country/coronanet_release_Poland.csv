@@ -1,0 +1,75 @@
+description,date_announced,date_start,date_end,country,init_country_level,domestic_policy,type,type_sub_cat,target_who_what,compliance,lockdown_length
+"Poland
+March 24th 2020
+""On Tuesday, March 24, Prime Minister Mateusz Morawiecki announced a series of new domestic restrictions intended to curb the spread of coronavirus disease (COVID-19). As of Tuesday, individuals in Poland will be prohibited from leaving their homes except for essential activities.""",2020-03-24,2020-03-24,2020-04-11,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory (Unspecified/Implied),18
+"Poland is introducing a general lock-down: until April 11 inclusive, people will not be able to move freely outside their living, health and professional goals.",2020-03-24,2020-03-25,2020-04-11,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory (Unspecified/Implied),17
+"On March 24th the Polish government stated that starting March 25th 2020 that movement limited to routes to/from work, volunteering against covid, and essential matters of everyday life",2020-03-24,2020-03-25,NA,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory (Unspecified/Implied),NA
+"Poland
+March 24th 2020
+""We introduce restrictions on movement
+
+Until April 11, inclusive, it will not be possible to move freely outside of living, health and professional purposes. Therefore, the restriction does not apply to:
+
+    commuting to work . If you are an employee, run your business or farm, you have the right to go to your job. You also have the right to go and purchase goods and services related to your professional activity.
+    volunteering. If you are working to fight the coronavirus and helping people in quarantine or who should not leave your home, you may be able to move around as part of this activity.
+    dealing with matters necessary for everyday life. You will be able to move around to do the necessary shopping, buy medicine, go to the doctor, look after your relatives, take your dog out.
+
+Important! It will only be possible to travel in a group of up to two people. This restriction does not apply to families. """,2020-03-24,2020-03-25,2020-04-11,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,17
+"Poland is introducing a general lock-down: until April 11 inclusive, people will not be able to move freely outside unless performing professional activities or completing the necessary needs related to the current affairs of everyday life, including obtaining health or psychological care. UPDATE: The original lockdown was set to last until April 11th 2020, it has been extended to April 19th",2020-03-24,2020-03-25,2020-04-19,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory (Unspecified/Implied),25
+"Starting April 1st 2020 minors under the age of 18 are not allowed to leave their home unless accompanied by a parent, legal guardian, or other adult.",2020-03-31,2020-04-01,2021-04-11,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,375
+"Poland
+As of April 1st 2020 minors under 18 years old are not allowed to leave their home unless accompanied by a parent, legal guardian or another adult.",2020-03-31,2020-04-01,NA,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,NA
+"Starting April 1st 2020 minors under the age of 18 are not allowed to leave their home unless accompanied by a parent, legal guardian, or other adult. UPDATE: The original policy was set to last until April 11th 2020, but it has been extended to April 19th 2020.",2020-03-31,2020-04-01,2021-04-19,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,383
+"As of the 20th of April, minors under the age of 13 are not allowed to leave their home unless accompanied by a parent, legal guardian or other adult.",2020-04-19,2020-04-20,2020-05-17,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,27
+"Poland
+March 24th 2020
+""We introduce restrictions on movement
+
+Until April 11, inclusive, it will not be possible to move freely outside of living, health and professional purposes. Therefore, the restriction does not apply to:
+
+    commuting to work . If you are an employee, run your business or farm, you have the right to go to your job. You also have the right to go and purchase goods and services related to your professional activity.
+    volunteering. If you are working to fight the coronavirus and helping people in quarantine or who should not leave your home, you may be able to move around as part of this activity.
+    dealing with matters necessary for everyday life. You will be able to move around to do the necessary shopping, buy medicine, go to the doctor, look after your relatives, take your dog out.
+
+Important! It will only be possible to travel in a group of up to two people. This restriction does not apply to families. "" UPDATE: Whereas prior it was not able for those under 18 to move freely without adult supervision and restrictions only allowed for going out when necessary for those over 18, starting on April 20th, those 13 and over may move freely without parental guardians.
+(2m distance and cloth masks still required while outside)",2020-04-16,2020-04-20,NA,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,NA
+"Poland
+March 24th 2020
+""We introduce restrictions on movement
+
+Until April 11, inclusive, it will not be possible to move freely outside of living, health and professional purposes. Therefore, the restriction does not apply to:
+
+    commuting to work . If you are an employee, run your business or farm, you have the right to go to your job. You also have the right to go and purchase goods and services related to your professional activity.
+    volunteering. If you are working to fight the coronavirus and helping people in quarantine or who should not leave your home, you may be able to move around as part of this activity.
+    dealing with matters necessary for everyday life. You will be able to move around to do the necessary shopping, buy medicine, go to the doctor, look after your relatives, take your dog out.
+
+Important! It will only be possible to travel in a group of up to two people. This restriction does not apply to families. "" UPDATE: On May 13th 2020 it was decided those 13 and under may leave home without parental or guardian supervision starting May 18th 2020",2020-05-13,2020-05-18,2020-05-18,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,0
+"Poland
+October 16th 2020
+
+""The Prime Minister has recommended the public to „stay at home”. –If you have the possibility to work remotely, you should use it – he emphasized.""",2020-10-16,2020-10-16,2020-10-18,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Voluntary/Recommended but No Penalties,2
+"Poland
+October 23rd 2020
+""from Monday to Friday, 8:00 a.m. to 4:00 p.m., children up to 16 years of age must move under the care of a parent or guardian. This rule does not apply: when your child goes to school or comes home from school, and on weekends.""",2020-10-23,2020-10-26,NA,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,NA
+"Poland
+November 3rd 2020
+""Seniors, stay home! We call for limiting the movement of seniors - especially people over 70 years old. The exceptions are situations related to:
+
+    performing professional activities,
+    satisfying the necessary needs related to the current affairs of everyday life,
+    exercising or participating in religious worship, including religious activities or rituals.""",2020-11-03,2020-11-03,2020-11-05,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Voluntary/Recommended but No Penalties,2
+"Poland
+October 23rd 2020
+""from Monday to Friday, 8:00 a.m. to 4:00 p.m., children up to 16 years of age must move under the care of a parent or guardian. This rule does not apply: when your child goes to school or comes home from school, and on weekends."" UPDATE: The policy is now being extended until November 29th 2020",2020-11-04,2020-11-07,2020-11-29,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Mandatory with Fines,22
+"Poland 
+January 28th 2020
+
+""Seniors
+
+Seniors, stay at home, please! We urge seniors, particularly persons above the age of 70, to limit their movement at all times except for the following circumstances:
+
+    performance of professional activities,
+    taking care of essential matters associated with daily life,
+    Performance or participation in activities related to a religious worship, including religious ceremonies.
+
+Effective until: further notice""",2021-01-28,2021-01-28,2023-12-02,Poland,National,1,Lockdown,NA,All Residents (Citizen Residents + Foreign Residents),Voluntary/Recommended but No Penalties,1038
