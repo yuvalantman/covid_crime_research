@@ -1,0 +1,64 @@
+---
+title: "lockdown_data"
+output: html_document
+date: "2025-05-18"
+---
+
+```{r}
+library(dplyr)
+library(lubridate)
+library(readr)
+
+# Set working directory where all CSVs are stored
+input_dir <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/lockdown_raw_datasets"         
+output_dir <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/lockdown_per_country"      
+
+# Create output directory if it doesn't exist
+if (!dir.exists(output_dir)) dir.create(output_dir)
+
+# Desired columns to keep
+columns_to_keep <- c("description", "date_announced", "date_start", "date_end",
+                     "country", "init_country_level", "domestic_policy", "type",
+                     "type_sub_cat", "target_who_what", "compliance")
+
+# Reference cutoff date
+cutoff_date <- dmy("30/04/2021")
+
+# Get list of CSV files in the input folder
+csv_files <- list.files(path = input_dir, pattern = "\\.csv$", full.names = TRUE)
+
+# Process each file
+for (file in csv_files) {
+  # Read the CSV
+  df <- read_csv(file, show_col_types = FALSE)
+  
+  # Parse date columns as dates
+  df <- df %>%
+    mutate(
+      date_start = ymd(date_start),
+      date_end = ymd(date_end)
+    )
+  
+  # Filter only lockdowns before cutoff
+  df_filtered <- df %>%
+    filter(type == "Lockdown", date_start < cutoff_date) %>%
+    select(all_of(columns_to_keep)) %>%
+    mutate(
+      lockdown_length = as.numeric(date_end - date_start)
+    )
+  
+  # Create output filename
+  file_name <- basename(file)
+  output_path <- file.path(output_dir, file_name)
+  
+  # Save filtered CSV
+  write_csv(df_filtered, output_path)
+}
+
+```
+```{r}
+df1 <- read.csv("C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/lockdown_raw_datasets/coronanet_release_Georgia.csv")
+head(df1$date_start)
+
+```
+
