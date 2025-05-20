@@ -19,7 +19,7 @@ opts_chunk$set(echo=FALSE) # hide source code in the document
 
 ## 2. Data
 
-We are using five datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other four datasets include lockdown policies, COVID-related deaths, unemployment rates, and public mental health indicators. 
+We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths and unemployment rates. 
 Some of our datasets of different measurments, we are looking to see trends in every country as its own so the measurment does not matter nor needs to be normalized.
 Also some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and look for trends generally and not specify by country then it is acceptable to research some factors on a partly dataset of countries as long as we have more than 10-15 countries and their other factors exist and have a difference between them.
 

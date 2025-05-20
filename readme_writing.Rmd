@@ -1,0 +1,76 @@
+---
+title: "readmewrite"
+output: html_document
+date: "2025-05-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+install.packages("readxl")
+install.packages("skimr")
+
+```
+
+```{r setup, message=FALSE}
+library(readxl)
+library(skimr)
+library(dplyr)
+```
+
+```{r}
+
+# Output file
+sink("C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/data/README.md")
+
+cat("# Data Dictionary\n\n")
+
+# Helper function: structured summary per dataset
+describe_dataset <- function(df, dataset_name) {
+  cat(paste0("## ", dataset_name, "\n"))
+  cat("**Description**: _[Write a general description of this dataset]_ \n\n")
+  
+  cat("**Columns:**\n")
+  for (col in names(df)) {
+    cat(paste0("- `", col, "`: _[your description here]_ \n"))
+  }
+  cat("\n")
+  
+  cat("**Structure (`glimpse`)**:\n")
+  print(glimpse(df), width = 80)
+  
+  cat("\n**Summary Statistics (`summary`)**:\n")
+  print(summary(df))
+  
+  cat("\n\n---\n\n")
+}
+
+# === Dataset 1: Domestic Violence ===
+dv_path <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/project datasets/covid_monthly_domesticviolence.xlsx"
+dv <- read_excel(dv_path)
+describe_dataset(dv, "1. covid_monthly_domesticviolence.xlsx")
+
+# === Dataset 2: Death Rates ===
+death_path <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/project datasets/death_rates.csv"
+death <- read_csv(death_path)
+describe_dataset(death, "2. death_rates.csv")
+
+# === Dataset 3: Mental Health ===
+mental_path <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/project datasets/Mental_Health_Disorders_By_Country.csv"
+mental <- read_csv(mental_path)
+describe_dataset(mental, "3. Mental_Health_Disorders_By_Country.csv")
+
+# === Dataset 4: Lockdown Policies ===
+lockdown_path <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/lockdown_raw_datasets/coronanet_release_Croatia.csv"
+lockdown <- read_csv(lockdown_path)
+describe_dataset(lockdown, "4. coronanet_release_Croatia.csv")
+
+# === Dataset 5: Unemployment Rates ===
+unemp_path <- "C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/project datasets/UNE_TUNE_SEX_AGE_NB_M-filtered-2025-05-18.csv"
+unemp <- read_csv(unemp_path)
+describe_dataset(unemp, "5. UNE_TUNE_SEX_AGE_NB_M-filtered-2025-05-18.csv")
+
+sink()
+```
+
