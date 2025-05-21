@@ -1,19 +1,35 @@
 ---
 title: "Project proposal"
 author: "Team 8"
-output: pdf_document
+output: 
+  pdf_document:
+    keep_tex: false
+    number_sections: true
+    toc: true
+    toc_depth: 2
+    fig_caption: true
 ---
 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 6,   
+  fig.height = 4,
+  out.width = "80%"  
+)
+```
+
 ```{r load-packages, message = FALSE}
-library(knitr)
 library(tidyverse)
 library(broom)
 library(htmltools)
 ```
 
-```{r setup, include = FALSE}
-opts_chunk$set(echo=FALSE) # hide source code in the document
-```
+
+
 
 ## 1. Introduction
 
@@ -101,7 +117,7 @@ merge <- read_csv("merged_deaths_violence_final.csv", show_col_types = FALSE) %>
 unemp <- read_csv("UNE_TUNE_SEX_AGE_NB_M-filtered-2025-05-18.csv", show_col_types = FALSE) %>%
   mutate(
     Entity = str_to_lower(`ref_area.label`),
-    year_month = str_replace(time, "M", "-")  # הפיכת 2020M12 ל־ 2020-12
+    year_month = str_replace(time, "M", "-")  
   )
 
 unemp_summary <- unemp %>%
@@ -169,6 +185,7 @@ This simultaneous change suggests that the early stages of the pandemic may have
 While the trends are not perfectly inversely correlated the timing of their shifts hints at a possible indirect connection between rising unemployment and increases in violence
 
 ```{r}
+library(scales)
 library(readr)
 library(dplyr)
 library(ggplot2)
