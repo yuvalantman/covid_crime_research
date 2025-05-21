@@ -172,7 +172,6 @@ While the trends are not perfectly inversely correlated the timing of their shif
 
 
 ## 4. Data analysis plan
-4. Data analysis plan
 
 Response (Y) Variable:
 
