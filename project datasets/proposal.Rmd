@@ -112,38 +112,52 @@ unemp_summary <- unemp %>%
 merged_final <- merge %>%
   left_join(unemp_summary, by = c("Entity", "year_month"))
 
-# שמירה לקובץ חדש
 write_csv(merged_final, "merged_with_unemployment.csv")
 
 ```
 
 ```{r}
 
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(gridExtra)
+
+df <- read_csv("merged_with_unemployment.csv")
+
+df_filtered <- df %>% filter(!is.na(unemployment_rate))
+
+
+monthly_avg <- df_filtered %>%
+  group_by(year_month) %>%
+  summarise(
+    avg_unemployment = mean(unemployment_rate, na.rm = TRUE),
+    avg_violence = mean(violence_indicator, na.rm = TRUE),
+    .groups = "drop"
+  )
+
 monthly_avg$year_month <- as.Date(paste0(monthly_avg$year_month, "-01"))
 
 
-monthly_avg$month_label <- format(monthly_avg$year_month, "%b")
-monthly_avg$month_label <- factor(monthly_avg$month_label,
-                                  levels = format(sort(unique(monthly_avg$year_month)), "%b"))
-
-
-p1 <- ggplot(monthly_avg, aes(x = month_label, y = avg_unemployment, group = 1)) +
+p1 <- ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
   geom_line(color = "orange", size = 1.2) +
   geom_point(color = "orange", size = 2) +
-  labs(title = "Unemployment Over Time",
+  labs(title = "Average Unemployment Rate (with data)",
        x = "Month", y = "Unemployment per 1,000 people") +
-  theme_minimal()
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-p2 <- ggplot(monthly_avg, aes(x = month_label, y = avg_violence, group = 1)) +
+p2 <- ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
-  labs(title = "Violence Indicator Over Time",
+  labs(title = "Average Violence Indicator (with unemployment data)",
        x = "Month", y = "Violence Indicator") +
-  theme_minimal()
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence During the Pandemic")
+grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence (with overlapping data only)")
 
 
 ```
@@ -250,6 +264,91 @@ In this graph we compare three countries that handled COVID-19 in a different wa
 
 
 ## 4. Data analysis plan
+
+Response (Y) Variable:
+
+Violence indicator: Our primary outcome measure representing reported domestic violence incidents
+
+Explanatory (X) Variables:
+
+-COVID mortality rates: Monthly deaths per 100,000 people
+-Lockdown severity: Categorized levels of government restrictions
+-Unemployment rates: Monthly unemployment figures per 1,000 people
+
+Comparison Groups
+Our analysis will leverage several comparison groups to identify patterns and differences:
+1. Geographic Comparison Groups
+
+-Continental regions: Group countries by continent (Europe, Asia, Americas, etc.)
+-Economic development level: High-income vs. middle-income vs. low-income countries
+-Cultural regions: Group countries with similar cultural characteristics
+
+2. Policy Response Comparison Groups
+
+Lockdown severity: Group countries by strictness of lockdown policies
+
+-High restriction (full lockdowns, stay-at-home orders)
+-Medium restriction (partial closures, curfews)
+-Low restriction (advisory measures, minimal restrictions)
+
+
+Policy timing: Early responders vs. delayed responders
+Policy duration: Short-term vs. long-term restrictions
+
+3. Temporal Comparison Groups
+
+Pandemic phases:
+
+-Pre-pandemic (before March 2020)
+-First wave (March-June 2020)
+-Intermediate period (July-October 2020)
+-Second wave (November 2020 onwards)
+
+Seasonal periods: To control for seasonal variations in violence reporting
+
+4. Impact-Based Comparison Groups
+
+-Mortality impact: Countries with high vs. medium vs. low COVID-19 death rates
+-Economic impact: Countries with high vs. medium vs. low unemployment increases
+-Combined impact: Create a composite score of health and economic impacts
+
+Analytical Methods
+
+Expected Findings from Group Comparisons
+We anticipate discovering:
+
+Regional variations: European countries may show different patterns than Asian or American countries due to cultural factors and social support systems
+Policy impact differences: High-restriction countries likely showing more pronounced V-shaped violence trends (initial decrease followed by increase)
+Temporal differences: First wave vs. second wave effects may differ as countries adapted response strategies
+Economic moderators: High unemployment countries may show stronger relationships between lockdowns and violence
+
+Teamwork Division
+Our analysis work will be divided as follows:
+
+Data Preparation and Feature Engineering:
+
+Team member 1: Clean and merge datasets, handle missing values
+Team member 2: Create derived features, normalize variables
+
+
+Comparison Group Analysis:
+
+Team member 3: Conduct ANOVA, t-tests, and statistical comparisons
+Team member 4: Design and implement visualization strategies for group comparisons
+
+
+Statistical Modeling:
+
+Team member 1: Implement region-specific models
+Team member 2: Develop policy-group models
+Team member 3: Create and evaluate temporal models
+Team member 4: Coordinate model evaluation and comparison across groups
+
+
+Results and Report Preparation:
+
+All team members will collaborate on interpreting results and preparing the final report
+I will lead the synthesis of findings across groups and the development of recommendations
 
 
 
