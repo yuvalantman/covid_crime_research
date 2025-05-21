@@ -154,6 +154,98 @@ In contrast the violence indicator reaches its lowest point in April followed by
 This simultaneous change suggests that the early stages of the pandemic may have impacted both economic and social stability
 While the trends are not perfectly inversely correlated the timing of their shifts hints at a possible indirect connection between rising unemployment and increases in violence
 
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(forcats)
+
+# === Load and prepare data ===
+dv <- read_csv("merged_with_unemployment.csv") %>%
+  rename(country = Entity) %>%
+  mutate(month = as.Date(paste0(year_month, "-01"))) %>%
+  filter(Indicator == "Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences") %>%
+  mutate(country = toupper(country))
+
+lockdowns <- read_csv("greece_spain_newzealand_lockdowns.csv") %>%
+  mutate(country = toupper(country),
+         month = as.Date(paste0(year_month, "-01")))
+
+selected_countries <- c("GREECE", "SPAIN", "NEW ZEALAND")
+
+# Merge & clean
+merged <- dv %>%
+  filter(country %in% selected_countries) %>%
+  left_join(lockdowns, by = c("country", "month")) %>%
+  mutate(lockdown_length = replace_na(lockdown_length, 0)) %>%
+  filter(format(month, "%Y-%m") != "2020-08")
+
+
+# Clean and structure data
+library(RColorBrewer)
+
+# Assuming 'merged' is your combined dataset
+plot_df <- merged %>%
+  filter(format(month, "%Y-%m") != "2020-08") %>%
+  mutate(
+    country = factor(country, levels = c("GREECE", "SPAIN", "NEW ZEALAND")),
+    month = as.Date(month)
+  ) %>%
+  group_by(country) %>%
+  arrange(month) %>%
+  mutate(
+    dv_index = violence_indicator / first(violence_indicator) * 100
+  ) %>%
+  ungroup()
+
+# Define a colorblind-friendly palette
+cb_palette <- brewer.pal(n = 3, name = "Set2")
+
+# Create the line plot
+ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
+  geom_line(size = 1) +
+  geom_point(aes(size = lockdown_length), alpha = 0.8) +
+  scale_color_manual(values = cb_palette) +
+  scale_size_continuous(range = c(2, 6), name = "Lockdown Days") +
+  scale_x_date(date_labels = "%b %Y", breaks = "1 month") +
+  scale_y_continuous(labels = label_number(suffix = "%")) +
+  labs(
+    title = "Monthly Domestic Violence Trends During COVID-19",
+    subtitle = "Lines represent DV offenses; point size indicates lockdown duration",
+    x = "Month",
+    y = "DV Index (First Month = 100)",
+    color = "Country"
+  ) +
+  theme_minimal(base_size = 7) +
+  theme(
+    # Legend styling (already working)
+    legend.position = "top",
+    legend.box.margin = margin(t = 10, r = 5, b = 10, l = 0),
+    legend.margin = margin(t = 3, b = 3),
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 8),
+    
+    # Axes text (tick labels)
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 10),
+  
+    # Axes titles
+    axis.title.x = element_text(size = 13, face = "bold"),
+    axis.title.y = element_text(size = 13, face = "bold"),
+  
+    # Titles
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 13, hjust = 0.5)
+  )
+
+
+
+
+
+
+```
+In this graph we compare three countries that handled COVID-19 in a different way through national lockdowns, Spain which had serious and long lockdowns, Greece which had partial and short lockdowns and New Zealand which had no lockdowns during this time, although it is only three countries we can see the domestic violence rates trends are very different and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
 
 
 
