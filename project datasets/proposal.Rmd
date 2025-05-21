@@ -88,6 +88,34 @@ We present two side-by-side time series plots
 The left plot shows the average global unemployment rate per 1000 people
 The right plot shows the average global violence indicator over time
 
+```{r}
+library(dplyr)
+library(readr)
+library(stringr)
+
+
+merge <- read_csv("merged_deaths_violence_final.csv", show_col_types = FALSE) %>%
+  mutate(Entity = str_to_lower(Entity),
+         year_month = as.character(year_month))
+
+unemp <- read_csv("UNE_TUNE_SEX_AGE_NB_M-filtered-2025-05-18.csv", show_col_types = FALSE) %>%
+  mutate(
+    Entity = str_to_lower(`ref_area.label`),
+    year_month = str_replace(time, "M", "-")  # הפיכת 2020M12 ל־ 2020-12
+  )
+
+unemp_summary <- unemp %>%
+  group_by(Entity, year_month) %>%
+  summarise(unemployment_rate = mean(obs_value, na.rm = TRUE), .groups = "drop")
+
+
+merged_final <- merge %>%
+  left_join(unemp_summary, by = c("Entity", "year_month"))
+
+# שמירה לקובץ חדש
+write_csv(merged_final, "merged_with_unemployment.csv")
+
+```
 
 ```{r}
 
