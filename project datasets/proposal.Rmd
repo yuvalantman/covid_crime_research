@@ -112,38 +112,52 @@ unemp_summary <- unemp %>%
 merged_final <- merge %>%
   left_join(unemp_summary, by = c("Entity", "year_month"))
 
-# שמירה לקובץ חדש
 write_csv(merged_final, "merged_with_unemployment.csv")
 
 ```
 
 ```{r}
 
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(gridExtra)
+
+df <- read_csv("merged_with_unemployment.csv")
+
+df_filtered <- df %>% filter(!is.na(unemployment_rate))
+
+
+monthly_avg <- df_filtered %>%
+  group_by(year_month) %>%
+  summarise(
+    avg_unemployment = mean(unemployment_rate, na.rm = TRUE),
+    avg_violence = mean(violence_indicator, na.rm = TRUE),
+    .groups = "drop"
+  )
+
 monthly_avg$year_month <- as.Date(paste0(monthly_avg$year_month, "-01"))
 
 
-monthly_avg$month_label <- format(monthly_avg$year_month, "%b")
-monthly_avg$month_label <- factor(monthly_avg$month_label,
-                                  levels = format(sort(unique(monthly_avg$year_month)), "%b"))
-
-
-p1 <- ggplot(monthly_avg, aes(x = month_label, y = avg_unemployment, group = 1)) +
+p1 <- ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
   geom_line(color = "orange", size = 1.2) +
   geom_point(color = "orange", size = 2) +
-  labs(title = "Unemployment Over Time",
+  labs(title = "Average Unemployment Rate (with data)",
        x = "Month", y = "Unemployment per 1,000 people") +
-  theme_minimal()
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-p2 <- ggplot(monthly_avg, aes(x = month_label, y = avg_violence, group = 1)) +
+p2 <- ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
-  labs(title = "Violence Indicator Over Time",
+  labs(title = "Average Violence Indicator (with unemployment data)",
        x = "Month", y = "Violence Indicator") +
-  theme_minimal()
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence During the Pandemic")
+grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence (with overlapping data only)")
 
 
 ```
