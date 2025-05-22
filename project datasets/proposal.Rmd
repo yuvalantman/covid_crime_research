@@ -38,17 +38,7 @@ library(htmltools)
 
 ## 1. Introduction
 <<<<<<< HEAD
-Our research question is: How did COVID-19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic across 25 different countries?
-Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID-19’s impact on the economy, healthcare, and institutions is well-documented, less attention has been paid to private realms like households, intimate relationships, and domestic vulnerability.
 
-This analysis explores how large-scale crises that confine people at home, such as the pandemic, affect patterns of domestic violence, focusing on stressors like mortality, unemployment, and enforced proximity.
-
-This question is difficult to answer, both because such violence is often underreported and because the available data is fragmented across sources, uneven in quality, and covers different countries and time frames.
-We are using four datasets that include monthly domestic violence indicators, mortality rates from COVID-19, unemployment data, and lockdown policy information. Not all datasets contain all countries, but we believe the overlap is sufficient to draw meaningful insights. We have structured our data month-by-month for the first half of 2020, and aligned it across countries using consistent identifiers and variables. Our approach is to visualize and analyze trends, and then apply statistical models to test relationships between key variables.
-Our exploratory goal is to understand how reported domestic violence changed over time during the pandemic, and whether there are visible associations between those trends and variables such as unemployment, mortality, or lockdown severity. Our predictive goal is to evaluate whether these factors can help predict the direction and intensity of change in violence indicators. We plan to use regression models, including non-linear and interaction terms, and experiment with derived variables such as cumulative lockdown duration or lagged unemployment. Our hypothesis is that violence decreased sharply during periods of strict lockdown (possibly due to reporting problems), and rose again afterwards. We also expect that high unemployment will be associated with higher levels of violence, and that mortality may have a delayed or mixed effect.
-We believe this approach is unique because it combines multiple international datasets that were not originally designed to be used together, and applies data science tools to a highly sensitive and underexplored topic.
-The potential contribution of this research is in clarifying how public health policy may affect private and often hidden aspects of individual life, beyond commonly studied economic or institutional factors. thereby supporting the development of more intelligent and sensitive responses to future crises.
-=======
 Our research question is: How did COVID 19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic, across 25 different countries?
 
 Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID 19’s impact on the economy, healthcare, and institutions is well documented, less attention has been paid to private realms like the home, intimate relationships, and domestic vulnerability.
