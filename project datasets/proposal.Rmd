@@ -329,82 +329,49 @@ Although it is only three countries, we can see the domestic violence rate trend
 
 ## 4. Data analysis plan
 
+Our data analysis plan implements a multi method approach to examine how pandemic factors affected domestic violence rates across diverse global contexts. We will analyze temporal patterns in violence reporting alongside COVID-19 mortality, lockdown policies, and economic indicators to identify causal relationships and moderating factors.
 Response (Y) Variable:
-  Violence indicator: Our primary outcome measure representing reported domestic violence incidents
-
+Violence indicator: Our primary outcome measure representing reported domestic violence incidents
 Explanatory (X) Variables:
-  -COVID mortality rates: Monthly deaths per 100,000 people
-  -Lockdown severity: Categorized levels of government restrictions
-  -Unemployment rates: Monthly unemployment figures per 1,000 people
+
+	•COVID mortality rates: Monthly deaths per 100,000 people
+	•Lockdown severity: Categorized levels of government restrictions
+	•Unemployment rates: Monthly unemployment figures per 1,000 people
 
 Comparison Groups
-    We'll group countries across several dimensions:
-Geographic: 
-Continental regions and economic development levels (high/middle/low-income)
-    Policy Response:
-      -Lockdown severity (high/medium/low restriction)
-      -Policy timing (early vs delayed responders)
+We will group countries across several dimensions:
+Geographic:
 
+	•Continental regions: Countries grouped by continental location (Europe, Americas, Asia, Africa, Oceania)
+
+Policy Response:
+	•Lockdown severity (none/partial/full)
 
 Temporal:
-Pandemic phases (pre-pandemic, first wave, intermediate, second wave)
-Seasonal periods to control for seasonal variations
+	•Pandemic phases (pre-pandemic, intermediate, second wave)
+	•Seasonal periods to control for seasonal variations
 
 Impact-Based:
+	•Mortality impact: Countries with high/medium/low COVID-19 death rates
+                Methods
+Data Visualization
+Using time series plots to visualize trends in violence reporting during different pandemic phases. This will help us identify patterns and test our hypothesis visually before conducting statistical analysis.
 
-Mortality impact groups
-Economic impact groups
+-Needed results: Time series plots showing violence increases as lockdowns extended in duration across different countries and regions
+Multiple Linear Regression
+Analyzing how lockdown duration, unemployment, and mortality rates simultaneously affected violence indicators while controlling for multiple factors. This directly tests our hypothesis about associations between pandemic stressors and violence.
 
+	•Needed results: Significant positive coefficients for lockdown duration and unemployment variables, confirming the hypothesized associations between these factors and violence increases
 
+Feature Engineering
+Creating derived variables including cumulative lockdown duration and percent changes from pre-pandemic baselines to better capture the effects of extended lockdowns on violence patterns.
 
-Methods
+	•Needed results: Improved model performance when using cumulative lockdown measures, supporting the hypothesis that violence effects accumulate over lockdown duration
 
--Data Visualization & Transformation
-Using time series plots and log transformations to visualize trends and address non-linear patterns in violence reporting.
+Model Evaluation
 
--Multiple Linear Regression
-Analyzing how mortality, unemployment, and lockdown measures simultaneously affected violence indicators while controlling for multiple factors.
-
--Non-Linear Modeling
-Incorporating polynomial terms to capture potential non-linear relationships between pandemic duration and violence trends.
-
--Interaction Models
-Testing whether lockdown effects varied based on economic conditions using interaction terms in our regression models.
-
--Feature Engineering
-Creating derived variables including lagged variables, percent changes from baselines, and cumulative measures of lockdown duration.
-
--Model Evaluation
-Using adjusted R-squared, residual analysis, and visual diagnostics to identify effective models and prevent overfitting.
-
-Expected Results
-We expect to find:
-
--Regional variations in violence patterns across continents
--A "V-shaped" trend in high-restriction countries (initial decrease followed by increase)
--Different patterns between first and second waves as countries adapted
--Stronger lockdown-violence associations in countries with higher unemployment
-
-These findings would support our hypothesis that pandemic factors influenced domestic violence in complex ways, moderated by economic conditions and varying across different types of countries and pandemic phases.
-Teamwork Division
-Data Preparation:
-
-Team member 1: Clean datasets, handle missing values
-Team member 2: Create derived features, normalize variables
-
-Statistical Analysis:
-
-Team member 3: Conduct group comparisons (ANOVA, t-tests)
-Team member 4: Design visualization strategies
-
-Modeling:
-
-Team members 1 & 2: Implement regional and policy-specific models
-Team member 3: Create temporal models
-Team member 4: Coordinate model evaluation across groups
-
-Report Preparation:
-All team members will collaborate on interpreting results with me leading the synthesis of findings across groups.
+Using adjusted R-squared and residual analysis to assess model fit and check assumptions about our linear relationships.
+	•Needed results: Adjusted R^2 values above 0.3 and normally distributed residuals confirming model validity and explanatory power
 
 
 ## Appendix
