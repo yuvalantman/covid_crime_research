@@ -157,13 +157,15 @@ write_csv(merged_final, "merged_with_unemployment.csv")
 ```
 
 ```{r}
-
 library(dplyr)
 library(readr)
 library(ggplot2)
 library(gridExtra)
+library(grid) 
+
 
 df <- read_csv("merged_with_unemployment.csv")
+
 
 df_filtered <- df %>% filter(!is.na(unemployment_rate))
 
@@ -176,37 +178,40 @@ monthly_avg <- df_filtered %>%
     .groups = "drop"
   )
 
+
 monthly_avg$year_month <- as.Date(paste0(monthly_avg$year_month, "-01"))
 
 
 p1 <- ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
   geom_line(color = "orange", size = 1.2) +
   geom_point(color = "orange", size = 2) +
-  labs(title = "Average Unemployment Rate (with data)",
-       x = "Month", y = "Unemployment per 1,000 people") +
+  labs(title = "Unemployment Rate",
+       x = "Month", y = "Per 1,000 people") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(size = 11)
+  )
 
 
 p2 <- ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
-  labs(title = "Average Violence Indicator (with unemployment data)",
-       x = "Month", y = "Violence Indicator") +
+  labs(title = "Violence Indicator",
+       x = "Month", y = "Index") +
   theme_minimal() +
   theme(
-  legend.title = element_text(size = 6),
-  legend.text = element_text(size = 5),
-  axis.text.x = element_text(size = 5),
-  axis.text.y = element_text(size = 5),
-  axis.title.x = element_text(size = 6),
-  axis.title.y = element_text(size = 6),
-  plot.title = element_text(size = 8, face = "bold", hjust = 0.5),
-  plot.subtitle = element_text(size = 6, hjust = 0.5)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(size = 11)
+  )
+
+
+grid.arrange(
+  p1, p2,
+  ncol = 2,
+  top = textGrob("Trends in Unemployment and Violence", gp = gpar(fontsize = 12, fontface = "bold"))
 )
 
-
-grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence (with overlapping data only)")
 
 
 ```
