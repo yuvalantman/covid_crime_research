@@ -1,4 +1,4 @@
-   
+---
 title: "Project proposal"
 author: "Team 8"
 output:
@@ -11,10 +11,10 @@ output:
   word_document:
     toc: true
     toc_depth: 2
-header includes:
-    \usepackage{titling}
-    \setlength{\droptitle}{ 4em}
-   
+header-includes:
+  - \usepackage{titling}
+  - \setlength{\droptitle}{-4em}
+---
 
 
 
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r load packages, message = FALSE}
+```{r load-packages, message = FALSE}
 library(tidyverse)
 library(broom)
 library(htmltools)
@@ -39,32 +39,30 @@ library(htmltools)
 
 
 ## 1. Introduction
-Our research question is: How did COVID 19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic, across 25 different countries?
+Our research question is: How did COVID-19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic, across 25 different countries?
 
-Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID 19’s impact on the economy, healthcare, and institutions is well documented, less attention has been paid to private realms like the home, intimate relationships, and domestic vulnerability.
+Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID-19’s impact on the economy, healthcare, and institutions is well-documented, less attention has been paid to private realms like the home, intimate relationships, and domestic vulnerability.
 
-This analysis examines how home confinement during crises, combined with stressors like mortality and unemployment, affects violence patterns. Answering this is challenging due to underreporting and fragmented, inconsistent data across countries and timeframes.
+This analysis explores how large-scale crises that confine people at home, such as the pandemic, affect patterns of domestic violence focusing on stressors like mortality, unemployment, and enforced proximity.
 
-We are using four datasets that include monthly domestic violence indicators, mortality rates from COVID 19, unemployment data, and lockdown policy information. Not all datasets contain all countries, but we believe the overlap is sufficient to draw meaningful insights. We have structured our data month by month for the first half of 2020, and aligned it across countries using consistent identifiers and variables. Our approach is to visualize and analyze trends, and then apply statistical models to test relationships between key variables.
-This approach is unique in combining diverse international datasets and applying data science to a sensitive, underexplored issue.
+This question is difficult to answer, both because such violence is often underreported, and because the available data is fragmented across sources, uneven in quality, and covers different countries and time frames.
 
-We aim to explore how reported domestic violence changed during the pandemic and whether it is linked to key pandemic related stressors. We will use regression models with non linear and interaction terms, testing variables such as cumulative lockdown duration and lagged unemployment to assess their predictive power.
+We are using four datasets that include monthly domestic violence indicators, mortality rates from COVID-19, unemployment data, and lockdown policy information. Not all datasets contain all countries, but we believe the overlap is sufficient to draw meaningful insights. We have structured our data month by month for the first half of 2020 and aligned it across countries using consistent identifiers and variables. Our approach is to visualize and analyze trends, and then apply statistical models to test relationships between key variables. Specifically, we aim to explore how reported domestic violence changed during the pandemic and whether it is linked to key pandemic-related stressors. We will use regression models with non-linear and interaction terms, and test variables such as cumulative lockdown duration and lagged unemployment to assess their predictive power. This approach is unique in combining diverse international datasets and applying data science to a sensitive, underexplored issue. 
 
 The potential contribution of this research is in clarifying how public health policy may affect private and often hidden aspects of individual life, beyond commonly studied economic or institutional factors. thereby supporting the development of more intelligent and sensitive responses to future crises.
 
-
 ## 2. Data
 
-We are using four datasets to explore how the COVID 19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID related deaths and unemployment rates. 
+We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths and unemployment rates. 
 Some of our datasets of different measurments, we are looking to see trends in every country as its own so the measurment does not matter nor needs to be normalized.
-Also some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and look for trends generally and not specify by country then it is acceptable to research some factors on a partly dataset of countries as long as we have more than 10 15 countries and their other factors exist and have a difference between them.
+Also some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and look for trends generally and not specify by country then it is acceptable to research some factors on a partly dataset of countries as long as we have more than 10-15 countries and their other factors exist and have a difference between them.
 
 A full description of each dataset and the features we are using is provided in the README.md file in the `/data` folder and appears in the appendix of this document.
 
 ## 3. Preliminary results
-In this analysis, we examine the relationship between trends in deaths per 100,000 people and reported violence incidents during the first months of the COVID 19 pandemic.
+In this analysis, we examine the relationship between trends in deaths per 100,000 people and reported violence incidents during the first months of the COVID-19 pandemic.
 
-We plotted two time series graphs side by side:
+We plotted two time series graphs side-by-side:
 One shows the monthly deaths per 100,000 people
 The other shows the average violence indicator over the same period
 
@@ -75,11 +73,11 @@ library(ggplot2)
 library(patchwork)
 
 
-df <  read_csv("merged_deaths_violence_final.csv")
+df <- read_csv("merged_deaths_violence_final.csv")
 
 
-df_summary <  df %>%
-  mutate(year_month = as.Date(paste0(year_month, " 01"))) %>%
+df_summary <- df %>%
+  mutate(year_month = as.Date(paste0(year_month, "-01"))) %>%
   group_by(year_month) %>%
   summarise(
     avg_deaths = mean(monthly_avg_deaths, na.rm = TRUE),
@@ -88,7 +86,7 @@ df_summary <  df %>%
   mutate(deaths_per_100k = avg_deaths * 100000)
 
 
-p1 <  ggplot(df_summary, aes(x = year_month, y = deaths_per_100k, group = 1)) +
+p1 <- ggplot(df_summary, aes(x = year_month, y = deaths_per_100k, group = 1)) +
   geom_line(color = "firebrick", size = 1.2) +
   geom_point(color = "firebrick", size = 2) +
   labs(title = "Deaths per 100,000 Over Time",
@@ -97,7 +95,7 @@ p1 <  ggplot(df_summary, aes(x = year_month, y = deaths_per_100k, group = 1)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-p2 <  ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
+p2 <- ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
   labs(title = "Violence Indicator Over Time",
@@ -120,15 +118,15 @@ p2 <  ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
 
 
 ```
-The graphs reveal that during the COVID 19 outbreak peak around April 2020, the number of deaths per 100,000 increased sharply. In contrast, the violence indicator shows a sharp decrease at the exact same time. After April, we observe an inverse pattern: while deaths begin to decline, violence starts to rise again.
+The graphs reveal that during the COVID-19 outbreak peak around April 2020, the number of deaths per 100,000 increased sharply. In contrast, the violence indicator shows a sharp decrease at the exact same time. After April, we observe an inverse pattern: while deaths begin to decline, violence starts to rise again.
 
 These opposite trends suggest a potential negative association between mortality levels and violence during the pandemic — possibly reflecting factors such as lockdown severity, reduced social interaction, or underreporting of violence
 
 
 
-This analysis examines the global trends in unemployment per 1000 people and violence incidents during the early phase of the COVID 19 pandemic
+This analysis examines the global trends in unemployment per 1000 people and violence incidents during the early phase of the COVID-19 pandemic
 
-We present two side by side time series plots
+We present two side-by-side time series plots
 The left plot shows the average global unemployment rate per 1000 people
 The right plot shows the average global violence indicator over time
 
@@ -138,22 +136,22 @@ library(readr)
 library(stringr)
 
 
-merge <  read_csv("merged_deaths_violence_final.csv", show_col_types = FALSE) %>%
+merge <- read_csv("merged_deaths_violence_final.csv", show_col_types = FALSE) %>%
   mutate(Entity = str_to_lower(Entity),
          year_month = as.character(year_month))
 
-unemp <  read_csv("UNE_TUNE_SEX_AGE_NB_M filtered 2025 05 18.csv", show_col_types = FALSE) %>%
+unemp <- read_csv("UNE_TUNE_SEX_AGE_NB_M-filtered-2025-05-18.csv", show_col_types = FALSE) %>%
   mutate(
     Entity = str_to_lower(`ref_area.label`),
-    year_month = str_replace(time, "M", " ")  
+    year_month = str_replace(time, "M", "-")  
   )
 
-unemp_summary <  unemp %>%
+unemp_summary <- unemp %>%
   group_by(Entity, year_month) %>%
   summarise(unemployment_rate = mean(obs_value, na.rm = TRUE), .groups = "drop")
 
 
-merged_final <  merge %>%
+merged_final <- merge %>%
   left_join(unemp_summary, by = c("Entity", "year_month"))
 
 write_csv(merged_final, "merged_with_unemployment.csv")
@@ -168,13 +166,13 @@ library(gridExtra)
 library(grid) 
 
 
-df <  read_csv("merged_with_unemployment.csv")
+df <- read_csv("merged_with_unemployment.csv")
 
 
-df_filtered <  df %>% filter(!is.na(unemployment_rate))
+df_filtered <- df %>% filter(!is.na(unemployment_rate))
 
 
-monthly_avg <  df_filtered %>%
+monthly_avg <- df_filtered %>%
   group_by(year_month) %>%
   summarise(
     avg_unemployment = mean(unemployment_rate, na.rm = TRUE),
@@ -183,10 +181,10 @@ monthly_avg <  df_filtered %>%
   )
 
 
-monthly_avg$year_month <  as.Date(paste0(monthly_avg$year_month, " 01"))
+monthly_avg$year_month <- as.Date(paste0(monthly_avg$year_month, "-01"))
 
 
-p1 <  ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
+p1 <- ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
   geom_line(color = "orange", size = 1.2) +
   geom_point(color = "orange", size = 2) +
   labs(title = "Unemployment Rate",
@@ -198,7 +196,7 @@ p1 <  ggplot(monthly_avg, aes(x = year_month, y = avg_unemployment)) +
   )
 
 
-p2 <  ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
+p2 <- ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
   geom_line(color = "steelblue", size = 1.2) +
   geom_point(color = "steelblue", size = 2) +
   labs(title = "Violence Indicator",
@@ -219,7 +217,7 @@ grid.arrange(
 
 
 ```
-Although the relationship between the two variables is less clearly defined compared to previous analyses we still observe a notable shift around April 2020 when the COVID 19 pandemic began to peak globally
+Although the relationship between the two variables is less clearly defined compared to previous analyses we still observe a notable shift around April 2020 when the COVID-19 pandemic began to peak globally
 During this time the unemployment rate begins a steady increase that continues in the following months
 In contrast the violence indicator reaches its lowest point in April followed by a gradual upward trend
 
@@ -235,32 +233,32 @@ library(lubridate)
 library(forcats)
 
 # === Load and prepare data ===
-dv <  read_csv("merged_with_unemployment.csv") %>%
+dv <- read_csv("merged_with_unemployment.csv") %>%
   rename(country = Entity) %>%
-  mutate(month = as.Date(paste0(year_month, " 01"))) %>%
+  mutate(month = as.Date(paste0(year_month, "-01"))) %>%
   filter(Indicator == "Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences") %>%
   mutate(country = toupper(country))
 
-lockdowns <  read_csv("greece_spain_newzealand_lockdowns.csv") %>%
+lockdowns <- read_csv("greece_spain_newzealand_lockdowns.csv") %>%
   mutate(country = toupper(country),
-         month = as.Date(paste0(year_month, " 01")))
+         month = as.Date(paste0(year_month, "-01")))
 
-selected_countries <  c("GREECE", "SPAIN", "NEW ZEALAND")
+selected_countries <- c("GREECE", "SPAIN", "NEW ZEALAND")
 
 # Merge & clean
-merged <  dv %>%
+merged <- dv %>%
   filter(country %in% selected_countries) %>%
   left_join(lockdowns, by = c("country", "month")) %>%
   mutate(lockdown_length = replace_na(lockdown_length, 0)) %>%
-  filter(format(month, "%Y %m") != "2020 08")
+  filter(format(month, "%Y-%m") != "2020-08")
 
 
 # Clean and structure data
 library(RColorBrewer)
 
 # Assuming 'merged' is your combined dataset
-plot_df <  merged %>%
-  filter(format(month, "%Y %m") != "2020 08") %>%
+plot_df <- merged %>%
+  filter(format(month, "%Y-%m") != "2020-08") %>%
   mutate(
     country = factor(country, levels = c("GREECE", "SPAIN", "NEW ZEALAND")),
     month = as.Date(month)
@@ -272,8 +270,8 @@ plot_df <  merged %>%
   ) %>%
   ungroup()
 
-# Define a colorblind friendly palette
-cb_palette <  brewer.pal(n = 3, name = "Set2")
+# Define a colorblind-friendly palette
+cb_palette <- brewer.pal(n = 3, name = "Set2")
 
 ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
   geom_line(size = 0.6) +  
@@ -283,7 +281,7 @@ ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
   scale_x_date(date_labels = "%b %Y", breaks = "1 month") +
   scale_y_continuous(labels = label_number(suffix = "%")) +
   labs(
-    title = "Monthly Domestic Violence Trends During COVID 19",
+    title = "Monthly Domestic Violence Trends During COVID-19",
     subtitle = "Lines = DV offenses | Point size = lockdown length",
     x = "Month",
     y = "DV Index (First Month = 100)",
@@ -308,7 +306,7 @@ ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
 
 
 ```
-In this graph we compare three countries that handled COVID 19 in a different way through national lockdowns, Spain which had serious and long lockdowns, Greece which had partial and short lockdowns and New Zealand which had no lockdowns during this time, although it is only three countries we can see the domestic violence rates trends are very different and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
+In this graph we compare three countries that handled COVID-19 in a different way through national lockdowns, Spain which had serious and long lockdowns, Greece which had partial and short lockdowns and New Zealand which had no lockdowns during this time, although it is only three countries we can see the domestic violence rates trends are very different and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
 
 
 
@@ -318,24 +316,24 @@ Response (Y) Variable:
   Violence indicator: Our primary outcome measure representing reported domestic violence incidents
 
 Explanatory (X) Variables:
-   COVID mortality rates: Monthly deaths per 100,000 people
-   Lockdown severity: Categorized levels of government restrictions
-   Unemployment rates: Monthly unemployment figures per 1,000 people
+  -COVID mortality rates: Monthly deaths per 100,000 people
+  -Lockdown severity: Categorized levels of government restrictions
+  -Unemployment rates: Monthly unemployment figures per 1,000 people
 
 Comparison Groups
     We'll group countries across several dimensions:
 Geographic: 
-Continental regions and economic development levels (high/middle/low income)
+Continental regions and economic development levels (high/middle/low-income)
     Policy Response:
-       Lockdown severity (high/medium/low restriction)
-       Policy timing (early vs delayed responders)
+      -Lockdown severity (high/medium/low restriction)
+      -Policy timing (early vs delayed responders)
 
 
 Temporal:
-Pandemic phases (pre pandemic, first wave, intermediate, second wave)
+Pandemic phases (pre-pandemic, first wave, intermediate, second wave)
 Seasonal periods to control for seasonal variations
 
-Impact Based:
+Impact-Based:
 
 Mortality impact groups
 Economic impact groups
@@ -344,31 +342,31 @@ Economic impact groups
 
 Methods
 
- Data Visualization & Transformation
-Using time series plots and log transformations to visualize trends and address non linear patterns in violence reporting.
+-Data Visualization & Transformation
+Using time series plots and log transformations to visualize trends and address non-linear patterns in violence reporting.
 
- Multiple Linear Regression
+-Multiple Linear Regression
 Analyzing how mortality, unemployment, and lockdown measures simultaneously affected violence indicators while controlling for multiple factors.
 
- Non Linear Modeling
-Incorporating polynomial terms to capture potential non linear relationships between pandemic duration and violence trends.
+-Non-Linear Modeling
+Incorporating polynomial terms to capture potential non-linear relationships between pandemic duration and violence trends.
 
- Interaction Models
+-Interaction Models
 Testing whether lockdown effects varied based on economic conditions using interaction terms in our regression models.
 
- Feature Engineering
+-Feature Engineering
 Creating derived variables including lagged variables, percent changes from baselines, and cumulative measures of lockdown duration.
 
- Model Evaluation
-Using adjusted R squared, residual analysis, and visual diagnostics to identify effective models and prevent overfitting.
+-Model Evaluation
+Using adjusted R-squared, residual analysis, and visual diagnostics to identify effective models and prevent overfitting.
 
 Expected Results
 We expect to find:
 
- Regional variations in violence patterns across continents
- A "V shaped" trend in high restriction countries (initial decrease followed by increase)
- Different patterns between first and second waves as countries adapted
- Stronger lockdown violence associations in countries with higher unemployment
+-Regional variations in violence patterns across continents
+-A "V-shaped" trend in high-restriction countries (initial decrease followed by increase)
+-Different patterns between first and second waves as countries adapted
+-Stronger lockdown-violence associations in countries with higher unemployment
 
 These findings would support our hypothesis that pandemic factors influenced domestic violence in complex ways, moderated by economic conditions and varying across different types of countries and pandemic phases.
 Teamwork Division
@@ -379,12 +377,12 @@ Team member 2: Create derived features, normalize variables
 
 Statistical Analysis:
 
-Team member 3: Conduct group comparisons (ANOVA, t tests)
+Team member 3: Conduct group comparisons (ANOVA, t-tests)
 Team member 4: Design visualization strategies
 
 Modeling:
 
-Team members 1 & 2: Implement regional and policy specific models
+Team members 1 & 2: Implement regional and policy-specific models
 Team member 3: Create temporal models
 Team member 4: Coordinate model evaluation across groups
 
