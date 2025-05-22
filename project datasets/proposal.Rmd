@@ -36,15 +36,13 @@ library(htmltools)
 ```
 
 
-
-
 ## 1. Introduction
-Our research question is: How did COVID-19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic, across 25 different countries?
-Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID-19’s impact on the economy, healthcare, and institutions is well-documented, less attention has been paid to private realms like the home, intimate relationships, and domestic vulnerability.
+Our research question is: How did COVID-19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic across 25 different countries?
+Understanding these dynamics requires looking beyond surface indicators to the social effects of crisis in usually hidden spaces. While COVID-19’s impact on the economy, healthcare, and institutions is well-documented, less attention has been paid to private realms like households, intimate relationships, and domestic vulnerability.
 
-This analysis explores how large-scale crises that confine people at home, such as the pandemic, affect patterns of domestic violence focusing on stressors like mortality, unemployment, and enforced proximity.
+This analysis explores how large-scale crises that confine people at home, such as the pandemic, affect patterns of domestic violence, focusing on stressors like mortality, unemployment, and enforced proximity.
 
-This question is difficult to answer, both because such violence is often underreported, and because the available data is fragmented across sources, uneven in quality, and covers different countries and time frames.
+This question is difficult to answer, both because such violence is often underreported and because the available data is fragmented across sources, uneven in quality, and covers different countries and time frames.
 We are using four datasets that include monthly domestic violence indicators, mortality rates from COVID-19, unemployment data, and lockdown policy information. Not all datasets contain all countries, but we believe the overlap is sufficient to draw meaningful insights. We have structured our data month-by-month for the first half of 2020, and aligned it across countries using consistent identifiers and variables. Our approach is to visualize and analyze trends, and then apply statistical models to test relationships between key variables.
 Our exploratory goal is to understand how reported domestic violence changed over time during the pandemic, and whether there are visible associations between those trends and variables such as unemployment, mortality, or lockdown severity. Our predictive goal is to evaluate whether these factors can help predict the direction and intensity of change in violence indicators. We plan to use regression models, including non-linear and interaction terms, and experiment with derived variables such as cumulative lockdown duration or lagged unemployment. Our hypothesis is that violence decreased sharply during periods of strict lockdown (possibly due to reporting problems), and rose again afterwards. We also expect that high unemployment will be associated with higher levels of violence, and that mortality may have a delayed or mixed effect.
 We believe this approach is unique because it combines multiple international datasets that were not originally designed to be used together, and applies data science tools to a highly sensitive and underexplored topic.
@@ -53,9 +51,9 @@ The potential contribution of this research is in clarifying how public health p
 
 ## 2. Data
 
-We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths and unemployment rates. 
-Some of our datasets of different measurments, we are looking to see trends in every country as its own so the measurment does not matter nor needs to be normalized.
-Also some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and look for trends generally and not specify by country then it is acceptable to research some factors on a partly dataset of countries as long as we have more than 10-15 countries and their other factors exist and have a difference between them.
+We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths, and unemployment rates. 
+Some of our datasets are of different measurements; we are looking to see trends in every country as its own, so the measurement does not matter nor need to be normalized.
+Also, some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and looking for trends generally and not specifically by country, it is acceptable to research some factors on a partial dataset of countries as long as we have more than 10-15 countries and their other factors exist and have a difference between them.
 
 A full description of each dataset and the features we are using is provided in the README.md file in the `/data` folder and appears in the appendix of this document.
 
@@ -63,8 +61,8 @@ A full description of each dataset and the features we are using is provided in 
 In this analysis, we examine the relationship between trends in deaths per 100,000 people and reported violence incidents during the first months of the COVID-19 pandemic.
 
 We plotted two time series graphs side-by-side:
-One shows the monthly deaths per 100,000 people
-The other shows the average violence indicator over the same period
+One shows the monthly deaths per 100,000 people.
+The other shows the average violence indicator over the same period.
 
 ```{r}
 library(readr)
@@ -118,17 +116,18 @@ p2 <- ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
 
 
 ```
+
 The graphs reveal that during the COVID-19 outbreak peak around April 2020, the number of deaths per 100,000 increased sharply. In contrast, the violence indicator shows a sharp decrease at the exact same time. After April, we observe an inverse pattern: while deaths begin to decline, violence starts to rise again.
 
-These opposite trends suggest a potential negative association between mortality levels and violence during the pandemic — possibly reflecting factors such as lockdown severity, reduced social interaction, or underreporting of violence
+These opposite trends suggest a potential negative association between mortality levels and violence during the pandemic — possibly reflecting factors such as lockdown severity, reduced social interaction, or underreporting of violence.
 
 
 
-This analysis examines the global trends in unemployment per 1000 people and violence incidents during the early phase of the COVID-19 pandemic
+This analysis examines the global trends in unemployment per 1000 people and violence incidents during the early phase of the COVID-19 pandemic.
 
-We present two side-by-side time series plots
-The left plot shows the average global unemployment rate per 1000 people
-The right plot shows the average global violence indicator over time
+We present two side-by-side time series plots.
+The left plot shows the average global unemployment rate per 1000 people.
+The right plot shows the average global violence indicator over time.
 
 ```{r}
 library(dplyr)
@@ -217,12 +216,13 @@ grid.arrange(
 
 
 ```
-Although the relationship between the two variables is less clearly defined compared to previous analyses we still observe a notable shift around April 2020 when the COVID-19 pandemic began to peak globally
-During this time the unemployment rate begins a steady increase that continues in the following months
-In contrast the violence indicator reaches its lowest point in April followed by a gradual upward trend
 
-This simultaneous change suggests that the early stages of the pandemic may have impacted both economic and social stability
-While the trends are not perfectly inversely correlated the timing of their shifts hints at a possible indirect connection between rising unemployment and increases in violence
+Although the relationship between the two variables is less clearly defined compared to previous analyses, we still observe a notable shift around April 2020, when the COVID-19 pandemic began to peak globally.
+During this time the unemployment rate begins a steady increase that continues in the following months.
+In contrast, the violence indicator reaches its lowest point in April, followed by a gradual upward trend.
+
+This simultaneous change suggests that the early stages of the pandemic may have impacted both economic and social stability.
+While the trends are not perfectly inversely correlated, the timing of their shifts hints at a possible indirect connection between rising unemployment and increases in violence.
 
 ```{r}
 library(scales)
@@ -306,7 +306,9 @@ ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
 
 
 ```
-In this graph we compare three countries that handled COVID-19 in a different way through national lockdowns, Spain which had serious and long lockdowns, Greece which had partial and short lockdowns and New Zealand which had no lockdowns during this time, although it is only three countries we can see the domestic violence rates trends are very different and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
+
+In this graph we compare three countries that handled COVID-19 in a different way through national lockdowns: Spain which had serious and long lockdowns; Greece which had partial and short lockdowns; and New Zealand, which had no lockdowns during this time.
+Although it is only three countries, we can see the domestic violence rate trends are very different, and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
 
 
 
