@@ -1,14 +1,21 @@
 ---
 title: "Project proposal"
 author: "Team 8"
-output: 
+output:
   pdf_document:
     keep_tex: false
     number_sections: true
     toc: true
     toc_depth: 2
     fig_caption: true
+  word_document:
+    toc: true
+    toc_depth: 2
+header-includes:
+  - \usepackage{titling}
+  - \setlength{\droptitle}{-4em}
 ---
+
 
 
 ```{r setup, include = FALSE}
@@ -18,7 +25,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   fig.width = 6,   
   fig.height = 4,
-  out.width = "80%"  
+  out.width = "35%"  
 )
 ```
 
@@ -32,6 +39,15 @@ library(htmltools)
 
 
 ## 1. Introduction
+the first wave of the pandemic, across 25 different countries
+Understanding these dynamics requires moving beyond surface-level indicators and engaging with the social consequences of crisis in spaces that are typically shielded from public view. While much has been written about the impact of COVID-19 on the economy, healthcare systems, and institutional resilience, far less attention has been given to the private and often silenced spaces of human life :the home, intimate relationships, and domestic vulnerability.
+
+The general problem area that this analysis contributes to is the study of how large-scale crises that confine people to their homes affect patterns of private harm. Specifically, it addresses the question of how pandemic related stressors like mortality, unemployment, and enforced proximity through lockdowns may have influenced domestic violence. This question is difficult to answer, both because such violence is often underreported, and because the available data is fragmented across sources, uneven in quality, and covers different countries and time frames.
+We are using four datasets that include monthly domestic violence indicators, mortality rates from COVID-19, unemployment data, and lockdown policy information. Not all datasets contain all countries, but we believe the overlap is sufficient to draw meaningful insights. We have structured our data month-by-month for the first half of 2020, and aligned it across countries using consistent identifiers and variables. Our approach is to visualize and analyze trends, and then apply statistical models to test relationships between key variables.
+Our exploratory goal is to understand how reported domestic violence changed over time during the pandemic, and whether there are visible associations between those trends and variables such as unemployment, mortality, or lockdown severity. Our predictive goal is to evaluate whether these factors can help predict the direction and intensity of change in violence indicators. We plan to use regression models, including non-linear and interaction terms, and experiment with derived variables such as cumulative lockdown duration or lagged unemployment. Our hypothesis is that violence decreased sharply during periods of strict lockdown (possibly due to reporting problems), and rose again afterwards. We also expect that high unemployment will be associated with higher levels of violence, and that mortality may have a delayed or mixed effect.
+We believe this approach is unique because it combines multiple international datasets that were not originally designed to be used together, and applies data science tools to a highly sensitive and underexplored topic.
+The potential contribution of this research is in clarifying how public health policy may affect private and often hidden aspects of individual life, beyond commonly studied economic or institutional factors. thereby supporting the development of more intelligent and sensitive responses to future crises.
+
 
 ## 2. Data
 
@@ -83,8 +99,16 @@ p2 <- ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
   labs(title = "Violence Indicator Over Time",
        x = "Month", y = "Violence Indicator") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
+   theme(
+  legend.title = element_text(size = 6),
+  legend.text = element_text(size = 5),
+  axis.text.x = element_text(size = 5),
+  axis.text.y = element_text(size = 5),
+  axis.title.x = element_text(size = 6),
+  axis.title.y = element_text(size = 6),
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.5),
+  plot.subtitle = element_text(size = 6, hjust = 0.5)
+)
 
 (p1 + p2) +
   plot_annotation(title = "Comparison Between Deaths and Violence Trends")
@@ -170,7 +194,16 @@ p2 <- ggplot(monthly_avg, aes(x = year_month, y = avg_violence)) +
   labs(title = "Average Violence Indicator (with unemployment data)",
        x = "Month", y = "Violence Indicator") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+  legend.title = element_text(size = 6),
+  legend.text = element_text(size = 5),
+  axis.text.x = element_text(size = 5),
+  axis.text.y = element_text(size = 5),
+  axis.title.x = element_text(size = 6),
+  axis.title.y = element_text(size = 6),
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.5),
+  plot.subtitle = element_text(size = 6, hjust = 0.5)
+)
 
 
 grid.arrange(p1, p2, ncol = 2, top = "Trends in Unemployment and Violence (with overlapping data only)")
@@ -233,42 +266,32 @@ plot_df <- merged %>%
 # Define a colorblind-friendly palette
 cb_palette <- brewer.pal(n = 3, name = "Set2")
 
-# Create the line plot
 ggplot(plot_df, aes(x = month, y = dv_index, color = country)) +
-  geom_line(size = 1) +
-  geom_point(aes(size = lockdown_length), alpha = 0.8) +
+  geom_line(size = 0.6) +  
+  geom_point(aes(size = lockdown_length), alpha = 0.7) +
   scale_color_manual(values = cb_palette) +
-  scale_size_continuous(range = c(2, 6), name = "Lockdown Days") +
+  scale_size_continuous(range = c(1, 4), name = "Lockdown Days") + 
   scale_x_date(date_labels = "%b %Y", breaks = "1 month") +
   scale_y_continuous(labels = label_number(suffix = "%")) +
   labs(
     title = "Monthly Domestic Violence Trends During COVID-19",
-    subtitle = "Lines represent DV offenses; point size indicates lockdown duration",
+    subtitle = "Lines = DV offenses | Point size = lockdown length",
     x = "Month",
     y = "DV Index (First Month = 100)",
     color = "Country"
   ) +
-  theme_minimal(base_size = 7) +
+  theme_minimal(base_size = 6) + 
   theme(
-    # Legend styling (already working)
-    legend.position = "top",
-    legend.box.margin = margin(t = 10, r = 5, b = 10, l = 0),
-    legend.margin = margin(t = 3, b = 3),
-    legend.title = element_text(size = 12, face = "bold"),
-    legend.text = element_text(size = 8),
-    
-    # Axes text (tick labels)
-    axis.text.x = element_text(size = 10),
-    axis.text.y = element_text(size = 10),
-  
-    # Axes titles
-    axis.title.x = element_text(size = 13, face = "bold"),
-    axis.title.y = element_text(size = 13, face = "bold"),
-  
-    # Titles
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 13, hjust = 0.5)
-  )
+  legend.title = element_text(size = 6),
+  legend.text = element_text(size = 5),
+  axis.text.x = element_text(size = 5),
+  axis.text.y = element_text(size = 5),
+  axis.title.x = element_text(size = 6),
+  axis.title.y = element_text(size = 6),
+  plot.title = element_text(size = 8, face = "bold", hjust = 0.5),
+  plot.subtitle = element_text(size = 6, hjust = 0.5)
+)
+
 
 
 
