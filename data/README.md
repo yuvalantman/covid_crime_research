@@ -6,7 +6,8 @@ output:
 # Data Dictionary
 
 ## 1. covid_monthly_domesticviolence.xlsx
-**Description**: this is a monthly count of domestic violence cases across 34 countries during the beginning of COVID-19
+**Description**: this is a monthly count of domestic violence cases across 34 countries
+during the beginning of COVID-19
 
 **Columns:**
 - `Region`: self explenatory
@@ -74,12 +75,14 @@ $ Aug_2020     <dbl> 174, NA, NA, NA, NA, NA, NA, NA, NA, 0, 5, 1, 2, 7289, 0, 2
 ---
 
 ## 2. death_rates.csv
-**Description**: a 3 column dataset that will tell us the daily and by that monthly deaths from COVID-19 for 2020 and on if we need it 
+**Description**: a 3 column dataset that will tell us the daily and by that monthly deaths 
+from COVID-19 for 2020 and on if we need it 
 
 **Columns:**
 - `Entity`: the country indicator 
 - `Day`: daily date from the start of 2020 
-- `Daily new confirmed deaths due to COVID-19 per million people (rolling 7-day average, right-aligned)`: a 7 day rolling avarage of new deaths from COVID-19
+- `Daily new confirmed deaths due to COVID-19 per million people(rolling 7-day average, right-aligned)`: 
+a 7 day rolling avarage of new deaths from COVID-19
 
 **Structure (`glimpse`)**:
 Rows: 480,085

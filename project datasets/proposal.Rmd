@@ -37,7 +37,6 @@ library(htmltools)
 
 
 ## 1. Introduction
-<<<<<<< HEAD
 
 Our research question is: How did COVID 19 mortality, unemployment, and lockdown severity affect domestic violence trends during the first wave of the pandemic, across 25 different countries?
 
@@ -51,12 +50,11 @@ We are using four datasets that include monthly domestic violence indicators, mo
 We hypothesize that domestic violence increased as lockdowns extended in duration, and that there is a measurable association between violence trends and key pandemic related stressors such as unemployment and mortality.
 
 The potential contribution of this research is in clarifying how public health policy may affect private and often hidden aspects of individual life, beyond commonly studied economic or institutional factors, thereby supporting the development of more intelligent and sensitive responses to future crises.
->>>>>>> c80a2c5de1a6a3c9a3cb88bb039781bb102de3ac
-
 
 ## 2. Data
 
-We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries. Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths, and unemployment rates. 
+We are using four datasets to explore how the COVID-19 pandemic affected domestic violence trends across 25 countries.
+Our main dataset contains monthly reports of domestic violence. The other three datasets include lockdown policies, COVID-related deaths, and unemployment rates. 
 Some of our datasets are of different measurements; we are looking to see trends in every country as its own, so the measurement does not matter nor need to be normalized.
 Also, some of the datasets do not contain all the countries from our main dataset, but because we are working on 25 different countries and looking for trends generally and not specifically by country, it is acceptable to research some factors on a partial dataset of countries as long as we have more than 10-15 countries and their other factors exist and have a difference between them.
 
@@ -125,7 +123,6 @@ p2 <- ggplot(df_summary, aes(x = year_month, y = avg_violence, group = 1)) +
 The graphs reveal that during the COVID-19 outbreak peak around April 2020, the number of deaths per 100,000 increased sharply. In contrast, the violence indicator shows a sharp decrease at the exact same time. After April, we observe an inverse pattern: while deaths begin to decline, violence starts to rise again.
 
 These opposite trends suggest a potential negative association between mortality levels and violence during the pandemic — possibly reflecting factors such as lockdown severity, reduced social interaction, or underreporting of violence.
-
 
 
 This analysis examines the global trends in unemployment per 1000 people and violence incidents during the early phase of the COVID-19 pandemic.
@@ -316,7 +313,6 @@ In this graph we compare three countries that handled COVID-19 in a different wa
 Although it is only three countries, we can see the domestic violence rate trends are very different, and we would like to continue our research along with the other factors to fully understand what might cause the rise or fall of domestic violence during the beginning of the pandemic.
 
 
-
 ## 4. Data analysis plan
 
 Our data analysis plan implements a multi method approach to examine how pandemic factors affected domestic violence rates across diverse global contexts. We will analyze temporal patterns in violence reporting alongside COVID-19 mortality, lockdown policies, and economic indicators to identify causal relationships and moderating factors.
@@ -332,7 +328,8 @@ Comparison Groups
 We will group countries across several dimensions:
 Geographic:
 
-	•Continental regions: Countries grouped by continental location (Europe, Americas, Asia, Africa, Oceania)
+	•Continental regions: Countries grouped by continental location 
+	(Europe, Americas, Asia, Africa, Oceania)
 
 Policy Response:
 	•Lockdown severity (none/partial/full)
@@ -351,12 +348,15 @@ Using time series plots to visualize trends in violence reporting during differe
 Multiple Linear Regression
 Analyzing how lockdown duration, unemployment, and mortality rates simultaneously affected violence indicators while controlling for multiple factors. This directly tests our hypothesis about associations between pandemic stressors and violence.
 
-	•Needed results: Significant positive coefficients for lockdown duration and unemployment variables, confirming the hypothesized associations between these factors and violence increases
+	•Needed results: Significant positive coefficients for lockdown duration and unemployment
+	variables, confirming the hypothesized associations between these factors and violence
+	increases
 
 Feature Engineering
 Creating derived variables including cumulative lockdown duration and percent changes from pre-pandemic baselines to better capture the effects of extended lockdowns on violence patterns.
 
-	•Needed results: Improved model performance when using cumulative lockdown measures, supporting the hypothesis that violence effects accumulate over lockdown duration
+	•Needed results: Improved model performance when using cumulative lockdown measures, 
+	supporting the hypothesis that violence effects accumulate over lockdown duration
 
 Model Evaluation
 

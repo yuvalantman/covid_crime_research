@@ -1,0 +1,46 @@
+{
+  "chart": {
+    "title": "Daily new confirmed COVID-19 cases and deaths",
+    "subtitle": "7-day rolling average. Limited testing and challenges in the attribution of cause of death mean the cases and deaths counts may not be accurate.",
+    "citation": "World Health Organization (2025)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/daily-covid-cases-deaths-7-day-ra?tab=table&time=2020-01-02..2020-10-24&v=1&csvType=filtered&useColumnShortNames=false",
+    "selection": [
+      "World"
+    ]
+  },
+  "columns": {
+    "Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)": {
+      "titleShort": "Deaths",
+      "titleLong": "Deaths",
+      "unit": "deaths",
+      "timespan": "",
+      "type": "Numeric",
+      "owidVariableId": 954549,
+      "shortName": "new_deaths_7_day_avg_right",
+      "lastUpdated": "2025-06-11",
+      "nextUpdate": "2025-07-12",
+      "citationShort": "World Health Organization (2025) – processed by Our World in Data",
+      "citationLong": "World Health Organization (2025) – processed by Our World in Data. “Deaths” [dataset]. World Health Organization, “COVID-19 Dashboard WHO COVID-19 Dashboard - Daily cases and deaths” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/954549.metadata.json"
+    },
+    "Daily new confirmed cases due to COVID-19 (rolling 7-day average, right-aligned)": {
+      "titleShort": "Cases",
+      "titleLong": "Cases",
+      "unit": "cases",
+      "timespan": "",
+      "type": "Numeric",
+      "owidVariableId": 954548,
+      "shortName": "new_cases_7_day_avg_right",
+      "lastUpdated": "2025-06-11",
+      "nextUpdate": "2025-07-12",
+      "citationShort": "World Health Organization (2025) – processed by Our World in Data",
+      "citationLong": "World Health Organization (2025) – processed by Our World in Data. “Cases” [dataset]. World Health Organization, “COVID-19 Dashboard WHO COVID-19 Dashboard - Daily cases and deaths” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/954548.metadata.json"
+    }
+  },
+  "dateDownloaded": "2025-06-11",
+  "activeFilters": {
+    "tab": "table",
+    "time": "2020-01-02..2020-10-24"
+  }
+}
