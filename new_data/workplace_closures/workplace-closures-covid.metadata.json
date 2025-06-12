@@ -1,0 +1,38 @@
+{
+  "chart": {
+    "title": "Workplace closures during the COVID-19 pandemic",
+    "subtitle": "If policies vary at the subnational level, the index is shown as the response level of the strictest sub-region.",
+    "citation": "Blavatnik School of Government, University of Oxford (2023)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/workplace-closures-covid?tab=table&time=earliest..2020-08-31&mapSelect=~ALB&v=1&csvType=filtered&useColumnShortNames=false",
+    "selection": [
+      "Mali",
+      "Chad",
+      "Poland"
+    ]
+  },
+  "columns": {
+    "Workplace closing": {
+      "titleShort": "Workplace closing",
+      "titleLong": "Workplace closing",
+      "descriptionShort": "Record closings of workplaces.",
+      "descriptionKey": [
+        "Possible categories:\n\n- 0: no measures\n- 1: recommend closing (or recommend work from home) or all businesses open with alterations resulting in significant differences compared to non-Covid-19 operation\n- 2: require closing (or work from home) for some sectors or categories of workers\n- 3: require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors)"
+      ],
+      "unit": "",
+      "timespan": "",
+      "type": "Integer",
+      "owidVariableId": 961969,
+      "shortName": "c2m_workplace_closing",
+      "lastUpdated": "2024-08-01",
+      "citationShort": "Blavatnik School of Government, University of Oxford (2023) – with minor processing by Our World in Data",
+      "citationLong": "Blavatnik School of Government, University of Oxford (2023) – with minor processing by Our World in Data. “Workplace closing” [dataset]. Blavatnik School of Government, University of Oxford, “Government Response Tracker (OxCGRT)” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/961969.metadata.json"
+    }
+  },
+  "dateDownloaded": "2025-06-11",
+  "activeFilters": {
+    "tab": "table",
+    "time": "earliest..2020-08-31",
+    "mapSelect": "~ALB"
+  }
+}

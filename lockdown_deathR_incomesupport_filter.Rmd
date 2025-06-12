@@ -1,0 +1,102 @@
+---
+title: "lockdown_deathR_incomesupport_filter"
+output: html_document
+date: "2025-06-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(tidyverse)
+library(broom)
+library(htmltools)
+library(readxl)   # for reading Excel
+library(dplyr)    # for filtering, summarizing, etc.
+library(tidyr)    # for reshaping data if needed
+library(lubridate)
+library(stringr)
+```
+```{r}
+lockdowns <- read.csv("new_data/lockdowns/stay-at-home-covid.csv")
+death_rates <- read.csv("new_data/best_daily_deaths/daily-new-confirmed-covid-19-deaths-per-million-people.csv")
+income_support <- read.csv("new_data/income_support/income-support-covid.csv")
+workplace_closures <- read.csv("new_data/workplace_closures/workplace-closures-covid.csv")
+```
+
+```{r}
+merged_df <- lockdowns %>%
+  inner_join(death_rates, by = c("Entity", "Day")) %>%
+  inner_join(income_support, by = c("Entity", "Day")) %>%
+  inner_join(workplace_closures, by = c("Entity", "Day"))
+```
+```{r}
+my_countries <- c("Albania","Bosnia and Herzegovina", "Chile", "Croatia", "Czechia", "Eswatini", "Georgia", "Greece", "Guatemala", "Guyana", "Iceland", "Latvia", "Lebanon", "Lithuania", "Maldives", "Mongolia", "Myanmar", "Namibia", "New Zealand", "Peru", "Poland", "Serbia", "Spain", "Sweden", "Uruguay")
+
+filtered_new_data_df <- merged_df %>%
+  filter(Entity %in% my_countries)
+```
+
+```{r}
+filtered_new_data_df$Day <- as.Date(filtered_new_data_df$Day)
+
+# Filter rows up to and including August 31, 2020
+filtered_new_data_df <- filtered_new_data_df %>%
+  filter(Day <= as.Date("2020-08-31"))
+```
+
+```{r}
+country_counts <- filtered_new_data_df %>%
+  count(Entity, name = "num_rows") %>%
+  arrange(num_rows)
+country_df <- filtered_new_data_df %>%
+  filter(Entity == "Guatemala")
+country_df <- country_df %>%
+  mutate(Month = format(Day, "%Y-%m"))
+
+monthly_counts <- country_df %>%
+  count(Month, name = "num_days") %>%
+  arrange(Month)
+
+
+```
+```{r}
+#guatemala is missing 23/4 and 04/5 so ill add them by hand and fill in values from the original files or the same as the day before
+
+new_rows <- data.frame(
+  Entity = c("Guatemala", "Guatemala"),
+  Day = as.Date(c("2020-04-23", "2020-05-04")),
+  Code.x = c("GTM", "GTM"),
+  Stay.at.home.requirements = c(2, 2),
+  Daily.new.confirmed.deaths.due.to.COVID.19.per.million.people = c(0.112058, 0.112058),
+  Code.y = c("GTM", "GTM"),
+  Income.support = c(1, 1)
+)
+filtered_new_data_df <- dplyr::bind_rows(filtered_new_data_df, new_rows)
+
+```
+```{r}
+filtered_new_data_df <- filtered_new_data_df %>%
+  select(-Code.y, -Code.x)
+
+```
+```{r}
+monthly_data_df <- filtered_new_data_df %>%
+  mutate(Month = format(as.Date(Day), "%Y-%m")) %>%
+  group_by(Entity, Month) %>%
+  summarise(
+    Total_lockdown_length = sum(Stay.at.home.requirements != 0, na.rm = TRUE),
+    Lockdown_severity = sum(Stay.at.home.requirements, na.rm = TRUE),
+    Monthly_death_rates_per_million_people = sum(Daily.new.confirmed.deaths.due.to.COVID.19.per.million.people, na.rm = TRUE),
+    Monthly_income_support = sum(Income.support, na.rm = TRUE),
+    Monthly_workplace_closures_severity = sum(Workplace.closing, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+```{r}
+write.csv(monthly_data_df, "project datasets/Monthly_lockdowns_deaths_income_WPClosing.csv", row.names = FALSE)
+```
+
