@@ -1,0 +1,585 @@
+"Entity","Month","Total_lockdown_length","Lockdown_severity","Monthly_death_rates_per_million_people","Monthly_income_support","Monthly_workplace_closures_severity","Region","Sub.region","Indicator","n_missing","Violence_Value"
+"albania","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,111
+"albania","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,90
+"albania","2020-03",19,38,3.53661568,13,42,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,90
+"albania","2020-04",30,60,7.07323136,46,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,96
+"albania","2020-05",31,62,1.06098471,56,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,127
+"albania","2020-06",30,30,7.78055448,30,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,159
+"albania","2020-07",31,31,33.59784928,31,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,158
+"albania","2020-08",31,31,44.20769646,31,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,174
+"bosnia and herzegovina","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,73
+"bosnia and herzegovina","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,38
+"bosnia and herzegovina","2020-01",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,33
+"bosnia and herzegovina","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,95
+"bosnia and herzegovina","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,57
+"bosnia and herzegovina","2020-02",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,55
+"bosnia and herzegovina","2020-03",12,36,3.74441847,31,45,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,88
+"bosnia and herzegovina","2020-03",12,36,3.74441847,31,45,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,49
+"bosnia and herzegovina","2020-03",12,36,3.74441847,31,45,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,44
+"bosnia and herzegovina","2020-04",30,83,16.53784835,30,90,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,86
+"bosnia and herzegovina","2020-04",30,83,16.53784835,30,90,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,40
+"bosnia and herzegovina","2020-04",30,83,16.53784835,30,90,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,35
+"bosnia and herzegovina","2020-05",20,40,27.45906878,31,72,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,NA
+"bosnia and herzegovina","2020-05",20,40,27.45906878,31,72,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"bosnia and herzegovina","2020-05",20,40,27.45906878,31,72,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"bosnia and herzegovina","2020-06",0,0,9.67308108,30,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,NA
+"bosnia and herzegovina","2020-06",0,0,9.67308108,30,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"bosnia and herzegovina","2020-06",0,0,9.67308108,30,60,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"bosnia and herzegovina","2020-07",0,0,44.93302163,4,35,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,NA
+"bosnia and herzegovina","2020-07",0,0,44.93302163,4,35,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"bosnia and herzegovina","2020-07",0,0,44.93302163,4,35,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"bosnia and herzegovina","2020-08",0,0,84.24941345,0,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",4,NA
+"bosnia and herzegovina","2020-08",0,0,84.24941345,0,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"bosnia and herzegovina","2020-08",0,0,84.24941345,0,31,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"chile","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,11178
+"chile","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,1222
+"chile","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,4294
+"chile","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,9899
+"chile","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,1124
+"chile","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,3680
+"chile","2020-03",7,14,0.409144696,0,37,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,9578
+"chile","2020-03",7,14,0.409144696,0,37,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,1035
+"chile","2020-03",7,14,0.409144696,0,37,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,3626
+"chile","2020-04",30,60,10.637762405,29,60,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,7776
+"chile","2020-04",30,60,10.637762405,29,60,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,878
+"chile","2020-04",30,60,10.637762405,29,60,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,2889
+"chile","2020-05",31,86,39.94275178,31,79,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"chile","2020-05",31,86,39.94275178,31,79,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"chile","2020-05",31,86,39.94275178,31,79,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"chile","2020-06",30,90,234.13305904,45,90,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"chile","2020-06",30,90,234.13305904,45,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"chile","2020-06",30,90,234.13305904,45,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"chile","2020-07",31,93,194.4460235,62,93,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"chile","2020-07",31,93,194.4460235,62,93,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"chile","2020-07",31,93,194.4460235,62,93,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"chile","2020-08",31,93,95.4841467,62,93,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"chile","2020-08",31,93,95.4841467,62,93,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"chile","2020-08",31,93,95.4841467,62,93,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"croatia","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,190
+"croatia","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,21
+"croatia","2020-01",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,43
+"croatia","2020-01",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,148
+"croatia","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,222
+"croatia","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,38
+"croatia","2020-02",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,46
+"croatia","2020-02",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,144
+"croatia","2020-03",12,24,1.53570988,15,48,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,209
+"croatia","2020-03",12,24,1.53570988,15,48,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,13
+"croatia","2020-03",12,24,1.53570988,15,48,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,42
+"croatia","2020-03",12,24,1.53570988,15,48,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,163
+"croatia","2020-04",30,60,15.6130503,60,86,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,190
+"croatia","2020-04",30,60,15.6130503,60,86,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,4
+"croatia","2020-04",30,60,15.6130503,60,86,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,46
+"croatia","2020-04",30,60,15.6130503,60,86,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,143
+"croatia","2020-05",31,41,9.21425914,62,41,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,222
+"croatia","2020-05",31,41,9.21425914,62,41,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,9
+"croatia","2020-05",31,41,9.21425914,62,41,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,54
+"croatia","2020-05",31,41,9.21425914,62,41,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,163
+"croatia","2020-06",30,30,1.02380658,60,49,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,292
+"croatia","2020-06",30,30,1.02380658,60,49,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,19
+"croatia","2020-06",30,30,1.02380658,60,49,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,72
+"croatia","2020-06",30,30,1.02380658,60,49,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,212
+"croatia","2020-07",31,31,9.4702107,62,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,250
+"croatia","2020-07",31,31,9.4702107,62,62,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,16
+"croatia","2020-07",31,31,9.4702107,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,55
+"croatia","2020-07",31,31,9.4702107,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,190
+"croatia","2020-08",31,31,10.2380658,62,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,295
+"croatia","2020-08",31,31,10.2380658,62,62,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,13
+"croatia","2020-08",31,31,10.2380658,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,65
+"croatia","2020-08",31,31,10.2380658,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,217
+"czechia","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,720
+"czechia","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,27
+"czechia","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,148
+"czechia","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,381
+"czechia","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,164
+"czechia","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,623
+"czechia","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,19
+"czechia","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,136
+"czechia","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,332
+"czechia","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,136
+"czechia","2020-03",17,34,2.623400814,2,56,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,406
+"czechia","2020-03",17,34,2.623400814,2,56,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,7
+"czechia","2020-03",17,34,2.623400814,2,56,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,90
+"czechia","2020-03",17,34,2.623400814,2,56,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,218
+"czechia","2020-03",17,34,2.623400814,2,56,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,91
+"czechia","2020-04",30,50,19.300734654,60,79,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,354
+"czechia","2020-04",30,50,19.300734654,60,79,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,8
+"czechia","2020-04",30,50,19.300734654,60,79,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,62
+"czechia","2020-04",30,50,19.300734654,60,79,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,206
+"czechia","2020-04",30,50,19.300734654,60,79,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,78
+"czechia","2020-05",31,31,7.870202524,62,55,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,NA
+"czechia","2020-05",31,31,7.870202524,62,55,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-05",31,31,7.870202524,62,55,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-05",31,31,7.870202524,62,55,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-05",31,31,7.870202524,62,55,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-06",0,0,2.623400778,60,30,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,NA
+"czechia","2020-06",0,0,2.623400778,60,30,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-06",0,0,2.623400778,60,30,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-06",0,0,2.623400778,60,30,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-06",0,0,2.623400778,60,30,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-07",0,0,3.185558096,62,31,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,NA
+"czechia","2020-07",0,0,3.185558096,62,31,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-07",0,0,3.185558096,62,31,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-07",0,0,3.185558096,62,31,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-07",0,0,3.185558096,62,31,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-08",0,0,4.309872778,62,31,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",5,NA
+"czechia","2020-08",0,0,4.309872778,62,31,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-08",0,0,4.309872778,62,31,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",5,NA
+"czechia","2020-08",0,0,4.309872778,62,31,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",5,NA
+"czechia","2020-08",0,0,4.309872778,62,31,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",5,NA
+"eswatini","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,459
+"eswatini","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,961
+"eswatini","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,459
+"eswatini","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,961
+"eswatini","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,393
+"eswatini","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,921
+"eswatini","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,393
+"eswatini","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,921
+"eswatini","2020-03",5,10,0,0,5,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,329
+"eswatini","2020-03",5,10,0,0,5,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,743
+"eswatini","2020-03",5,10,0,0,5,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,329
+"eswatini","2020-03",5,10,0,0,5,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,743
+"eswatini","2020-04",30,60,0.82043004,0,58,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,220
+"eswatini","2020-04",30,60,0.82043004,0,58,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,573
+"eswatini","2020-04",30,60,0.82043004,0,58,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,306
+"eswatini","2020-04",30,60,0.82043004,0,58,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,547
+"eswatini","2020-05",31,62,0.82043004,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,306
+"eswatini","2020-05",31,62,0.82043004,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,547
+"eswatini","2020-05",31,62,0.82043004,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,306
+"eswatini","2020-05",31,62,0.82043004,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,547
+"eswatini","2020-06",30,60,7.38387034,0,60,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,331
+"eswatini","2020-06",30,60,7.38387034,0,60,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,733
+"eswatini","2020-06",30,60,7.38387034,0,60,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,331
+"eswatini","2020-06",30,60,7.38387034,0,60,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,733
+"eswatini","2020-07",31,62,23.79247104,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,295
+"eswatini","2020-07",31,62,23.79247104,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,597
+"eswatini","2020-07",31,62,23.79247104,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,295
+"eswatini","2020-07",31,62,23.79247104,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,597
+"eswatini","2020-08",31,48,41.84193234,0,48,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Male victims",0,301
+"eswatini","2020-08",31,48,41.84193234,0,48,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,685
+"eswatini","2020-08",31,48,41.84193234,0,48,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,301
+"eswatini","2020-08",31,48,41.84193234,0,48,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,685
+"georgia","2020-01",0,0,0,0,0,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,481
+"georgia","2020-02",0,0,0,0,0,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,452
+"georgia","2020-03",23,33,0,0,49,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,466
+"georgia","2020-04",30,90,1.581141,7,86,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,NA
+"georgia","2020-05",31,78,1.581141,31,62,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,NA
+"georgia","2020-06",30,44,0.7905705,30,60,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,NA
+"georgia","2020-07",31,31,0.527047,31,62,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,NA
+"georgia","2020-08",31,31,0.527047,31,62,"Asia","Western Asia","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",5,NA
+"greece","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,391
+"greece","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,202
+"greece","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,365
+"greece","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,172
+"greece","2020-03",9,18,4.03364132,14,40,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,350
+"greece","2020-03",9,18,4.03364132,14,40,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,167
+"greece","2020-04",30,60,8.8355953,30,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,335
+"greece","2020-04",30,60,8.8355953,30,60,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,157
+"greece","2020-05",31,60,4.32175856,31,35,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,412
+"greece","2020-05",31,60,4.32175856,31,35,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,271
+"greece","2020-06",30,30,1.15246893,60,30,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,491
+"greece","2020-06",30,30,1.15246893,60,30,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,306
+"greece","2020-07",31,31,1.05642992,62,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,609
+"greece","2020-07",31,31,1.05642992,62,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,373
+"greece","2020-08",31,31,6.05046202,62,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",1,NA
+"greece","2020-08",31,31,6.05046202,62,31,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,NA
+"guatemala","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,56
+"guatemala","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,7
+"guatemala","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,49
+"guatemala","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,86
+"guatemala","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,12
+"guatemala","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,74
+"guatemala","2020-03",10,20,0.056029227,0,45,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,97
+"guatemala","2020-03",10,20,0.056029227,0,45,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,16
+"guatemala","2020-03",10,20,0.056029227,0,45,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,81
+"guatemala","2020-04",30,60,1.008525608,10,87,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,113
+"guatemala","2020-04",30,60,1.008525608,10,87,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,24
+"guatemala","2020-04",30,60,1.008525608,10,87,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,89
+"guatemala","2020-05",31,62,4.314249875,31,90,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,116
+"guatemala","2020-05",31,62,4.314249875,31,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,20
+"guatemala","2020-05",31,62,4.314249875,31,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,96
+"guatemala","2020-06",30,60,35.69061697,30,90,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,128
+"guatemala","2020-06",30,60,35.69061697,30,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,16
+"guatemala","2020-06",30,60,35.69061697,30,90,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,112
+"guatemala","2020-07",31,62,63.87331895,31,88,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,132
+"guatemala","2020-07",31,62,63.87331895,31,88,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,15
+"guatemala","2020-07",31,62,63.87331895,31,88,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,81
+"guatemala","2020-08",31,62,48.91351465,31,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,120
+"guatemala","2020-08",31,62,48.91351465,31,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",0,17
+"guatemala","2020-08",31,62,48.91351465,31,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,92
+"guyana","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,133
+"guyana","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,35
+"guyana","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,98
+"guyana","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,95
+"guyana","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,20
+"guyana","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,75
+"guyana","2020-03",6,6,1.2171551,0,12,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,114
+"guyana","2020-03",6,6,1.2171551,0,12,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,28
+"guyana","2020-03",6,6,1.2171551,0,12,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,86
+"guyana","2020-04",30,58,8.5200857,0,68,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,103
+"guyana","2020-04",30,58,8.5200857,0,68,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,24
+"guyana","2020-04",30,58,8.5200857,0,68,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,79
+"guyana","2020-05",31,62,3.6514653,0,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"guyana","2020-05",31,62,3.6514653,0,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"guyana","2020-05",31,62,3.6514653,0,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"guyana","2020-06",30,46,1.2171551,16,60,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"guyana","2020-06",30,46,1.2171551,16,60,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"guyana","2020-06",30,46,1.2171551,16,60,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"guyana","2020-07",31,60,9.7372408,31,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"guyana","2020-07",31,60,9.7372408,31,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"guyana","2020-07",31,60,9.7372408,31,62,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"guyana","2020-08",31,62,18.2573262,17,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",4,NA
+"guyana","2020-08",31,62,18.2573262,17,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Male victims",4,NA
+"guyana","2020-08",31,62,18.2573262,17,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",4,NA
+"iceland","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,82
+"iceland","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,76
+"iceland","2020-03",0,0,5.258702,22,32,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,77
+"iceland","2020-04",0,0,21.034808,60,60,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,102
+"iceland","2020-05",0,0,0,62,48,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,107
+"iceland","2020-06",0,0,0,60,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,91
+"iceland","2020-07",0,0,0,62,1,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,77
+"iceland","2020-08",0,0,0,62,31,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,79
+"latvia","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,12
+"latvia","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,3
+"latvia","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,10
+"latvia","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,14
+"latvia","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,13
+"latvia","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"latvia","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,10
+"latvia","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,11
+"latvia","2020-03",19,19,0,36,27,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,10
+"latvia","2020-03",19,19,0,36,27,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"latvia","2020-03",19,19,0,36,27,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,6
+"latvia","2020-03",19,19,0,36,27,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,9
+"latvia","2020-04",30,30,6.9111588,60,60,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,11
+"latvia","2020-04",30,30,6.9111588,60,60,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,3
+"latvia","2020-04",30,30,6.9111588,60,60,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,6
+"latvia","2020-04",30,30,6.9111588,60,60,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,7
+"latvia","2020-05",31,31,6.379531,28,62,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,14
+"latvia","2020-05",31,31,6.379531,28,62,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,2
+"latvia","2020-05",31,31,6.379531,28,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,8
+"latvia","2020-05",31,31,6.379531,28,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,10
+"latvia","2020-06",30,30,2.6581379,0,60,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,14
+"latvia","2020-06",30,30,2.6581379,0,60,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,5
+"latvia","2020-06",30,30,2.6581379,0,60,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,9
+"latvia","2020-06",30,30,2.6581379,0,60,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,8
+"latvia","2020-07",31,31,0.5316276,0,62,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,10
+"latvia","2020-07",31,31,0.5316276,0,62,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,0
+"latvia","2020-07",31,31,0.5316276,0,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,7
+"latvia","2020-07",31,31,0.5316276,0,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,13
+"latvia","2020-08",31,31,1.5948828,0,62,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,12
+"latvia","2020-08",31,31,1.5948828,0,62,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,1
+"latvia","2020-08",31,31,1.5948828,0,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,12
+"latvia","2020-08",31,31,1.5948828,0,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,10
+"lebanon","2020-01",0,0,0,0,0,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,31
+"lebanon","2020-02",0,0,0,0,0,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,55
+"lebanon","2020-03",16,30,1.91489476,0,66,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,45
+"lebanon","2020-04",30,60,2.26305742,0,86,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,68
+"lebanon","2020-05",31,38,0.34816268,0,67,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1
+"lebanon","2020-06",30,30,1.39265072,0,60,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1
+"lebanon","2020-07",21,23,4.00387086,0,69,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1
+"lebanon","2020-08",21,53,17.93037826,0,50,"Asia","Western Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,NA
+"lithuania","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,620
+"lithuania","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,581
+"lithuania","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,201
+"lithuania","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,541
+"lithuania","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,622
+"lithuania","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,592
+"lithuania","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,130
+"lithuania","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,443
+"lithuania","2020-03",16,16,1.4200148,0,48,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,691
+"lithuania","2020-03",16,16,1.4200148,0,48,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,652
+"lithuania","2020-03",16,16,1.4200148,0,48,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,125
+"lithuania","2020-03",16,16,1.4200148,0,48,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,435
+"lithuania","2020-04",30,30,9.9401037,48,86,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,712
+"lithuania","2020-04",30,30,9.9401037,48,86,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,672
+"lithuania","2020-04",30,30,9.9401037,48,86,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,131
+"lithuania","2020-04",30,30,9.9401037,48,86,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,403
+"lithuania","2020-05",31,31,7.8100814,62,62,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,719
+"lithuania","2020-05",31,31,7.8100814,62,62,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,677
+"lithuania","2020-05",31,31,7.8100814,62,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,155
+"lithuania","2020-05",31,31,7.8100814,62,62,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,513
+"lithuania","2020-06",16,16,2.4850259,60,32,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,927
+"lithuania","2020-06",16,16,2.4850259,60,32,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,861
+"lithuania","2020-06",16,16,2.4850259,60,32,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,203
+"lithuania","2020-06",16,16,2.4850259,60,32,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,647
+"lithuania","2020-07",0,0,0.7100074,62,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,802
+"lithuania","2020-07",0,0,0.7100074,62,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,758
+"lithuania","2020-07",0,0,0.7100074,62,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,158
+"lithuania","2020-07",0,0,0.7100074,62,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,576
+"lithuania","2020-08",25,25,2.1300222,62,25,"Europe","Northern Europe","Sexual violence or physical assault by IPFM* (domestic violence): Total number of victims",0,867
+"lithuania","2020-08",25,25,2.1300222,62,25,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,817
+"lithuania","2020-08",25,25,2.1300222,62,25,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,204
+"lithuania","2020-08",25,25,2.1300222,62,25,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,551
+"mongolia","2020-01",5,5,0,0,10,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,17
+"mongolia","2020-01",5,5,0,0,10,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,8
+"mongolia","2020-01",5,5,0,0,10,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,7
+"mongolia","2020-02",29,29,0,0,58,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,15
+"mongolia","2020-02",29,29,0,0,58,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,9
+"mongolia","2020-02",29,29,0,0,58,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,5
+"mongolia","2020-03",31,31,0,0,62,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,11
+"mongolia","2020-03",31,31,0,0,62,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,5
+"mongolia","2020-03",31,31,0,0,62,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,4
+"mongolia","2020-04",30,30,0,0,60,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,18
+"mongolia","2020-04",30,30,0,0,60,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,5
+"mongolia","2020-04",30,30,0,0,60,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,8
+"mongolia","2020-05",31,31,0,0,65,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,21
+"mongolia","2020-05",31,31,0,0,65,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"mongolia","2020-05",31,31,0,0,65,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,13
+"mongolia","2020-06",0,0,0,0,60,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,18
+"mongolia","2020-06",0,0,0,0,60,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"mongolia","2020-06",0,0,0,0,60,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,11
+"mongolia","2020-07",0,0,0,0,62,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,25
+"mongolia","2020-07",0,0,0,0,62,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,11
+"mongolia","2020-07",0,0,0,0,62,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,14
+"mongolia","2020-08",0,0,0,27,62,"Asia","Eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,17
+"mongolia","2020-08",0,0,0,27,62,"Asia","Eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,12
+"mongolia","2020-08",0,0,0,27,62,"Asia","Eastern Asia","Physical asault by IPFM* (domestic violence): Female victims",0,5
+"myanmar","2020-01",0,0,0,0,0,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,11
+"myanmar","2020-01",0,0,0,0,0,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,11
+"myanmar","2020-02",0,0,0,0,0,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,19
+"myanmar","2020-02",0,0,0,0,0,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,19
+"myanmar","2020-03",0,0,0.018602319,0,12,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,22
+"myanmar","2020-03",0,0,0.018602319,0,12,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,22
+"myanmar","2020-04",27,44,0.093011595,3,81,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,35
+"myanmar","2020-04",27,44,0.093011595,3,81,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,35
+"myanmar","2020-05",31,62,0,15,75,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,27
+"myanmar","2020-05",31,62,0,15,75,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,27
+"myanmar","2020-06",30,60,0,0,60,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,35
+"myanmar","2020-06",30,60,0,0,60,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,35
+"myanmar","2020-07",31,62,0,0,62,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,43
+"myanmar","2020-07",31,62,0,0,62,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,43
+"myanmar","2020-08",31,62,0,0,62,"Asia","South-eastern Asia","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,18
+"myanmar","2020-08",31,62,0,0,62,"Asia","South-eastern Asia","Sexual violence by IPFM* (domestic violence): Female victims",0,18
+"namibia","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,207
+"namibia","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,5
+"namibia","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,37
+"namibia","2020-01",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,155
+"namibia","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,192
+"namibia","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,1
+"namibia","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,30
+"namibia","2020-02",0,0,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,148
+"namibia","2020-03",5,10,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,200
+"namibia","2020-03",5,10,0,0,0,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,6
+"namibia","2020-03",5,10,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,39
+"namibia","2020-03",5,10,0,0,0,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,139
+"namibia","2020-04",30,60,0,2,14,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,94
+"namibia","2020-04",30,60,0,2,14,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,4
+"namibia","2020-04",30,60,0,2,14,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,27
+"namibia","2020-04",30,60,0,2,14,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,59
+"namibia","2020-05",31,37,0,0,58,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,89
+"namibia","2020-05",31,37,0,0,58,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,3
+"namibia","2020-05",31,37,0,0,58,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,14
+"namibia","2020-05",31,37,0,0,58,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,66
+"namibia","2020-06",30,30,0,0,60,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,134
+"namibia","2020-06",30,30,0,0,60,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"namibia","2020-06",30,30,0,0,60,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,28
+"namibia","2020-06",30,30,0,0,60,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,88
+"namibia","2020-07",31,31,3.11459,0,62,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,156
+"namibia","2020-07",31,31,3.11459,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,7
+"namibia","2020-07",31,31,3.11459,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,29
+"namibia","2020-07",31,31,3.11459,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,111
+"namibia","2020-08",31,31,24.91671995,0,62,"Africa","Sub-Saharan Africa","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,177
+"namibia","2020-08",31,31,24.91671995,0,62,"Africa","Sub-Saharan Africa","Sexual violence by IPFM* (domestic violence): Female victims",0,5
+"namibia","2020-08",31,31,24.91671995,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Male victims",0,28
+"namibia","2020-08",31,31,24.91671995,0,62,"Africa","Sub-Saharan Africa","Physical asault by IPFM* (domestic violence): Female victims",0,128
+"new zealand","2020-01",0,0,0,0,0,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1055
+"new zealand","2020-01",0,0,0,0,0,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,32
+"new zealand","2020-01",0,0,0,0,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,198
+"new zealand","2020-01",0,0,0,0,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,820
+"new zealand","2020-02",0,0,0,0,0,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,979
+"new zealand","2020-02",0,0,0,0,0,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,39
+"new zealand","2020-02",0,0,0,0,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,222
+"new zealand","2020-02",0,0,0,0,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,717
+"new zealand","2020-03",11,20,0.19486795,30,27,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,991
+"new zealand","2020-03",11,20,0.19486795,30,27,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,33
+"new zealand","2020-03",11,20,0.19486795,30,27,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,202
+"new zealand","2020-03",11,20,0.19486795,30,27,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,754
+"new zealand","2020-04",30,60,3.5076231,60,87,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,824
+"new zealand","2020-04",30,60,3.5076231,60,87,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,21
+"new zealand","2020-04",30,60,3.5076231,60,87,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,167
+"new zealand","2020-04",30,60,3.5076231,60,87,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,635
+"new zealand","2020-05",13,26,0.58460385,62,26,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,803
+"new zealand","2020-05",13,26,0.58460385,62,26,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,26
+"new zealand","2020-05",13,26,0.58460385,62,26,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,156
+"new zealand","2020-05",13,26,0.58460385,62,26,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,618
+"new zealand","2020-06",0,0,0,60,0,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,820
+"new zealand","2020-06",0,0,0,60,0,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,26
+"new zealand","2020-06",0,0,0,60,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,176
+"new zealand","2020-06",0,0,0,60,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,616
+"new zealand","2020-07",0,0,0,62,0,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,784
+"new zealand","2020-07",0,0,0,62,0,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,18
+"new zealand","2020-07",0,0,0,62,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,144
+"new zealand","2020-07",0,0,0,62,0,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,622
+"new zealand","2020-08",19,38,0,62,58,"Oceania","Australia and New Zealand","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,631
+"new zealand","2020-08",19,38,0,62,58,"Oceania","Australia and New Zealand","Sexual violence by IPFM* (domestic violence): Female victims",0,10
+"new zealand","2020-08",19,38,0,62,58,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Male victims",0,110
+"new zealand","2020-08",19,38,0,62,58,"Oceania","Australia and New Zealand","Physical asault by IPFM* (domestic violence): Female victims",0,510
+"peru","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,13018
+"peru","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,13
+"peru","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,216
+"peru","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,12409
+"peru","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,17
+"peru","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,231
+"peru","2020-03",17,48,2.837906469,16,48,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,9750
+"peru","2020-03",17,48,2.837906469,16,48,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,11
+"peru","2020-03",17,48,2.837906469,16,48,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,183
+"peru","2020-04",30,90,119.81939917,30,90,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,4191
+"peru","2020-04",30,90,119.81939917,30,90,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,5
+"peru","2020-04",30,90,119.81939917,30,90,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,90
+"peru","2020-05",31,72,459.352502,31,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,5225
+"peru","2020-05",31,72,459.352502,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,7
+"peru","2020-05",31,72,459.352502,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,104
+"peru","2020-06",30,60,522.5033875,30,60,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,6730
+"peru","2020-06",30,60,522.5033875,30,60,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,11
+"peru","2020-06",30,60,522.5033875,30,60,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,177
+"peru","2020-07",31,62,538.335923,31,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,7633
+"peru","2020-07",31,62,538.335923,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,11
+"peru","2020-07",31,62,538.335923,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,184
+"peru","2020-08",31,62,539.620444,31,62,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,7799
+"peru","2020-08",31,62,539.620444,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Male victims",0,12
+"peru","2020-08",31,62,539.620444,31,62,"Americas","Latin America and the Caribbean","Sexual violence by IPFM* (domestic violence): Female victims",0,188
+"poland","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1023
+"poland","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,36
+"poland","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,212
+"poland","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1060
+"poland","2020-01",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,478
+"poland","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1174
+"poland","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,32
+"poland","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,187
+"poland","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,954
+"poland","2020-02",0,0,0,0,0,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,388
+"poland","2020-03",1,2,0.807592644,14,36,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1164
+"poland","2020-03",1,2,0.807592644,14,36,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,24
+"poland","2020-03",1,2,0.807592644,14,36,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,190
+"poland","2020-03",1,2,0.807592644,14,36,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,995
+"poland","2020-03",1,2,0.807592644,14,36,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,397
+"poland","2020-04",30,49,15.396363072,30,60,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,863
+"poland","2020-04",30,49,15.396363072,30,60,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,36
+"poland","2020-04",30,49,15.396363072,30,60,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,170
+"poland","2020-04",30,49,15.396363072,30,60,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,737
+"poland","2020-04",30,49,15.396363072,30,60,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,269
+"poland","2020-05",29,29,11.410502418,31,62,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1171
+"poland","2020-05",29,29,11.410502418,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,43
+"poland","2020-05",29,29,11.410502418,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,165
+"poland","2020-05",29,29,11.410502418,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,957
+"poland","2020-05",29,29,11.410502418,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,379
+"poland","2020-06",0,0,10.003728328,30,60,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,2127
+"poland","2020-06",0,0,10.003728328,30,60,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,52
+"poland","2020-06",0,0,10.003728328,30,60,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,328
+"poland","2020-06",0,0,10.003728328,30,60,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1586
+"poland","2020-06",0,0,10.003728328,30,60,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,643
+"poland","2020-07",0,0,6.903614556,31,62,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1101
+"poland","2020-07",0,0,6.903614556,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,29
+"poland","2020-07",0,0,6.903614556,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,170
+"poland","2020-07",0,0,6.903614556,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,670
+"poland","2020-07",0,0,6.903614556,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,287
+"poland","2020-08",0,0,8.440645688,31,62,"Europe","Eastern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,1148
+"poland","2020-08",0,0,8.440645688,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,28
+"poland","2020-08",0,0,8.440645688,31,62,"Europe","Eastern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,136
+"poland","2020-08",0,0,8.440645688,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,690
+"poland","2020-08",0,0,8.440645688,31,62,"Europe","Eastern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,277
+"serbia","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,486
+"serbia","2020-02",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,386
+"serbia","2020-03",17,48,2.35599974,1,38,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,399
+"serbia","2020-04",30,90,23.11824732,30,80,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,350
+"serbia","2020-05",31,43,10.16024872,31,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,459
+"serbia","2020-06",30,30,4.71199936,30,10,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,440
+"serbia","2020-07",31,31,42.84974636,33,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,450
+"serbia","2020-08",31,31,21.4984977,62,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,451
+"spain","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,7422
+"spain","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,19
+"spain","2020-01",0,0,0,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,141
+"spain","2020-01",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1254
+"spain","2020-01",0,0,0,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,6008
+"spain","2020-02",0,0,0.020908106,0,0,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,7622
+"spain","2020-02",0,0,0.020908106,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,11
+"spain","2020-02",0,0,0.020908106,0,0,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,114
+"spain","2020-02",0,0,0.020908106,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1299
+"spain","2020-02",0,0,0.020908106,0,0,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,6198
+"spain","2020-03",18,36,179.3079146,28,43,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,6341
+"spain","2020-03",18,36,179.3079146,28,43,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,13
+"spain","2020-03",18,36,179.3079146,28,43,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,97
+"spain","2020-03",18,36,179.3079146,28,43,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1075
+"spain","2020-03",18,36,179.3079146,28,43,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,5156
+"spain","2020-04",30,60,346.42641,60,90,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,5870
+"spain","2020-04",30,60,346.42641,60,90,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,8
+"spain","2020-04",30,60,346.42641,60,90,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,93
+"spain","2020-04",30,60,346.42641,60,90,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1075
+"spain","2020-04",30,60,346.42641,60,90,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,4694
+"spain","2020-05",31,57,84.092404,55,83,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,7994
+"spain","2020-05",31,57,84.092404,55,83,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,19
+"spain","2020-05",31,57,84.092404,55,83,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,118
+"spain","2020-05",31,57,84.092404,55,83,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1507
+"spain","2020-05",31,57,84.092404,55,83,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,6350
+"spain","2020-06",20,20,11.9176211,60,37,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,9122
+"spain","2020-06",20,20,11.9176211,60,37,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,19
+"spain","2020-06",20,20,11.9176211,60,37,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,193
+"spain","2020-06",20,20,11.9176211,60,37,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1624
+"spain","2020-06",20,20,11.9176211,60,37,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,7286
+"spain","2020-07",28,45,3.11530792,62,48,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,9377
+"spain","2020-07",28,45,3.11530792,62,48,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,22
+"spain","2020-07",28,45,3.11530792,62,48,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,182
+"spain","2020-07",28,45,3.11530792,62,48,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1590
+"spain","2020-07",28,45,3.11530792,62,48,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,7583
+"spain","2020-08",31,40,23.8979657,62,62,"Europe","Southern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,9056
+"spain","2020-08",31,40,23.8979657,62,62,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Male victims",0,13
+"spain","2020-08",31,40,23.8979657,62,62,"Europe","Southern Europe","Sexual violence by IPFM* (domestic violence): Female victims",0,157
+"spain","2020-08",31,40,23.8979657,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Male victims",0,1586
+"spain","2020-08",31,40,23.8979657,62,62,"Europe","Southern Europe","Physical asault by IPFM* (domestic violence): Female victims",0,7300
+"sweden","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1855
+"sweden","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,6
+"sweden","2020-01",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,172
+"sweden","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,349
+"sweden","2020-01",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1328
+"sweden","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1836
+"sweden","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,4
+"sweden","2020-02",0,0,0,0,0,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,163
+"sweden","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,360
+"sweden","2020-02",0,0,0,0,0,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1309
+"sweden","2020-03",7,7,27.08040211,42,16,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1915
+"sweden","2020-03",7,7,27.08040211,42,16,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,5
+"sweden","2020-03",7,7,27.08040211,42,16,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,158
+"sweden","2020-03",7,7,27.08040211,42,16,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,419
+"sweden","2020-03",7,7,27.08040211,42,16,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1333
+"sweden","2020-04",30,30,239.6234136,60,30,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1864
+"sweden","2020-04",30,30,239.6234136,60,30,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,8
+"sweden","2020-04",30,30,239.6234136,60,30,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,118
+"sweden","2020-04",30,30,239.6234136,60,30,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,404
+"sweden","2020-04",30,30,239.6234136,60,30,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1334
+"sweden","2020-05",31,31,169.5385714,62,31,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,2061
+"sweden","2020-05",31,31,169.5385714,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,8
+"sweden","2020-05",31,31,169.5385714,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,171
+"sweden","2020-05",31,31,169.5385714,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,442
+"sweden","2020-05",31,31,169.5385714,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1440
+"sweden","2020-06",30,30,83.9111042,60,30,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,2161
+"sweden","2020-06",30,30,83.9111042,60,30,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,7
+"sweden","2020-06",30,30,83.9111042,60,30,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,156
+"sweden","2020-06",30,30,83.9111042,60,30,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,476
+"sweden","2020-06",30,30,83.9111042,60,30,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1522
+"sweden","2020-07",31,31,25.17333105,62,31,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,1967
+"sweden","2020-07",31,31,25.17333105,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,11
+"sweden","2020-07",31,31,25.17333105,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,163
+"sweden","2020-07",31,31,25.17333105,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,358
+"sweden","2020-07",31,31,25.17333105,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,1435
+"sweden","2020-08",31,31,6.67474696,62,31,"Europe","Northern Europe","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",1,NA
+"sweden","2020-08",31,31,6.67474696,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Male victims",1,NA
+"sweden","2020-08",31,31,6.67474696,62,31,"Europe","Northern Europe","Sexual violence by IPFM* (domestic violence): Female victims",1,NA
+"sweden","2020-08",31,31,6.67474696,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Male victims",1,NA
+"sweden","2020-08",31,31,6.67474696,62,31,"Europe","Northern Europe","Physical asault by IPFM* (domestic violence): Female victims",1,NA
+"uruguay","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,294
+"uruguay","2020-01",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,389
+"uruguay","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,289
+"uruguay","2020-02",0,0,0,0,0,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,288
+"uruguay","2020-03",19,19,0,14,17,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,282
+"uruguay","2020-03",19,19,0,14,17,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,323
+"uruguay","2020-04",30,41,4.42365234,30,30,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,294
+"uruguay","2020-04",30,41,4.42365234,30,30,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,283
+"uruguay","2020-05",31,31,2.06437106,31,31,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,257
+"uruguay","2020-05",31,31,2.06437106,31,31,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,281
+"uruguay","2020-06",30,30,1.4745508,30,30,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,248
+"uruguay","2020-06",30,30,1.4745508,30,30,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,255
+"uruguay","2020-07",9,9,2.35928128,32,31,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,202
+"uruguay","2020-07",9,9,2.35928128,32,31,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,255
+"uruguay","2020-08",1,1,2.65419142,62,31,"Americas","Latin America and the Caribbean","Sexual violence or physical assault by IPFM*  (domestic violence): Total number of offences",0,242
+"uruguay","2020-08",1,1,2.65419142,62,31,"Americas","Latin America and the Caribbean","Physical asault by IPFM* (domestic violence): Female victims",0,268
