@@ -1,0 +1,72 @@
+This repository reproduces the full workflow requested in the final‑project brief:
+
+   1.Diagnose multicollinearity (correlation matrix, VIF, PCA).
+
+  2.Reduce dimensionality / drop redundant features.
+
+  3.Fit two adapting polynomial regressions:
+      #Model 1 – violence_change ~ f(lockdown_length, GDP, unemployment, …)
+      #Model 2 – death_change    ~ f(lockdown_length, hospital_beds, density, …)
+
+  4.Produce a dual‑line plot that shows predicted Δ‑Violence and Δ‑Deaths as a function of lockdown length, highlighting the social–health trade‑off.
+
+Folder structure.
+├── scripts/
+│   └── covid_lockdown_pca_regression.R   # main pipeline (runnable)
+├── data/
+│   └── raw/              # place CSVs here – ignored by git
+├── results/              # created automatically
+├── .gitignore
+└── README.md
+
+Why no data in git? The raw datasets are large and/or under external licenses. They are excluded via .gitignore to keep the repository lightweight and compliant.
+
+Required CSVs
+
+Download the following files and drop them into data/raw/ before running:
+File
+Source
+stay-at-home-covid.csv
+Our World in Data (OxCGRT C6)
+workplace-closures-covid.csv
+Our World in Data (OxCGRT C2)
+income-support-covid.csv
+Our World in Data (OxCGRT E1)
+daily-new-confirmed-covid-19-deaths-per-million-people.csv
+
+OWID
+total-covid-cases-deaths-per-million.csv
+
+OWID
+domestic_violence_timeseries.csv
+
+user‑supplied — provide the download link or describe how to obtain it
+
+Quick start
+
+# clone the repo
+git clone https://github.com/<user>/covid-lockdown-analysis.git
+cd covid-lockdown-analysis
+
+# place all CSVs listed above in data/raw/
+
+# install R dependencies (first run only)
+Rscript -e "install.packages(c('tidyverse','lubridate','FactoMineR','factoextra','car','broom','patchwork'))"
+
+# run the full pipeline
+Rscript scripts/covid_lockdown_pca_regression.R
+
+Outputs:
+
+results/tradeoff_plot.png – dual‑line plot.
+
+Model summaries print to the console. Redirect with > model_summary.txt if needed.
+
+Non‑reproducible parts
+
+If domestic_violence_timeseries.csv is unavailable, comment out the three lines in the script that load and use the violence dataset. The violence model and its curve will be skipped—the death model still runs.
+
+License
+
+Code released under the MIT License. Underlying data remain under their original licenses (see OWID & local DV dataset terms).
+
