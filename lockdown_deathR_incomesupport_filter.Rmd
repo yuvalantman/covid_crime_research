@@ -100,3 +100,142 @@ monthly_data_df <- filtered_new_data_df %>%
 write.csv(monthly_data_df, "project datasets/Monthly_lockdowns_deaths_income_WPClosing.csv", row.names = FALSE)
 ```
 
+
+```{r}
+library(tidyverse)
+library(readr)
+library(lubridate)
+
+# קריאת טבלת האלימות
+violence_df <- read.csv("project datasets/filtered_domesticviolence_monthly.csv")
+
+# הופכים ל-long (כל החודשים לשורות)
+violence_long <- violence_df %>%
+  pivot_longer(
+    cols = matches("^[A-Za-z]{3}_[0-9]{4}$"), 
+    names_to = "Month", 
+    values_to = "Violence_Value"
+  )
+
+# המרה לפורמט חודשים YYYY-MM
+violence_long <- violence_long %>%
+  mutate(
+    Month = str_replace(Month, "_", "-"),
+    Month = as.Date(paste0("01-", Month), format = "%d-%b-%Y"),
+    Month = format(Month, "%Y-%m")
+  )
+
+# משנה את שם העמודה Country ל־Entity כדי ליישר לשמות הפיצ'רים
+violence_long <- violence_long %>%
+  rename(Entity = Country)
+
+# תוצאה סופית — לכל מדינה, חודש ואינדיקטור יש שורה נפרדת
+print(head(violence_long))
+
+# שומר את הטבלה החדשה
+write.csv(violence_long, "project datasets/Violence_Tidy_AllIndicators.csv", row.names = FALSE)
+
+
+```
+
+```{r}
+library(tidyverse)
+library(readr)
+
+# קריאת שני הקבצים
+features_df <- read.csv("project datasets/Monthly_lockdowns_deaths_income_WPClosing.csv")
+violence_long <- read.csv("project datasets/Violence_Tidy_AllIndicators.csv")
+
+# נורמליזציה של שמות המדינות
+features_df <- features_df %>%
+  mutate(Entity = str_to_lower(Entity))
+
+violence_long <- violence_long %>%
+  mutate(Entity = str_to_lower(Entity))
+
+# full outer join בין הפיצ'רים לאלימות
+final_df <- full_join(
+  features_df, 
+  violence_long, 
+  by = c("Entity", "Month")
+)
+
+# מיון לפי Entity ואז Month
+final_df <- final_df %>%
+  arrange(Entity, Month)
+
+# שמירה לקובץ
+write.csv(final_df, "project datasets/Monthly_features_with_all_violence_final.csv", row.names = FALSE)
+
+```
+```{r}
+library(tidyverse)
+library(readr)
+library(lubridate)
+
+# קריאת הקובץ המאוחד
+df <- read.csv("project datasets/Monthly_features_with_all_violence_final.csv")
+
+# נורמליזציה של שמות המדינות (שיהיה עקבי)
+df <- df %>%
+  mutate(Entity = str_to_lower(Entity))
+
+# הסרה של שורות בלי נתוני אלימות (שאי אפשר לנתח עליהן)
+df_clean <- df %>%
+  filter(!is.na(Violence_Value),
+         !is.na(Total_lockdown_length),
+         !is.na(Monthly_income_support),
+         !is.na(Monthly_workplace_closures_severity),
+         !is.na(Monthly_death_rates_per_million_people))
+
+# נרמול (z-score) לכל משתני הפיצ'רים והאלימות
+df_clean <- df_clean %>%
+  mutate(
+    norm_lockdown = as.numeric(scale(Total_lockdown_length)),
+    norm_income = as.numeric(scale(Monthly_income_support)),
+    norm_workplace = as.numeric(scale(Monthly_workplace_closures_severity)),
+    norm_death = as.numeric(scale(Monthly_death_rates_per_million_people)),
+    norm_violence = as.numeric(scale(Violence_Value))
+  )
+
+# ניקוי פורמט תאריך (אם נצטרך תאריכים בהמשך)
+df_clean <- df_clean %>%
+  mutate(Month_date = as.Date(paste0(Month, "-01")))
+
+# שומר את הקובץ המוכן לניתוחים
+write.csv(df_clean, "project datasets/Monthly_features_cleaned_ready.csv", row.names = FALSE)
+
+```
+
+```{r}
+library(tidyverse)
+library(readr)
+
+# קריאה של הפיצ'רים
+data_df <- read.csv("project datasets/Monthly_features_with_all_violence_final.csv")
+
+# קריאה של האוכלוסייה עם שמירה על השמות המקוריים
+pop_df <- read.csv("project datasets/population_2020_countries.csv", check.names = FALSE)
+
+# התאמת שמות העמודות
+pop_df <- pop_df %>%
+  rename(Entity = `Country`,
+         Population = `Population (2020)`)
+
+# נורמליזציה של שמות המדינות
+pop_df <- pop_df %>%
+  mutate(Entity = str_to_lower(Entity))
+
+# איחוד
+merged_df <- left_join(data_df, pop_df, by = "Entity")
+
+# חישוב אלימות ל-100,000 איש
+merged_df <- merged_df %>%
+  mutate(Violence_per_million_people = (Violence_Value / Population) * 1000000)
+
+# שמירה לקובץ
+write.csv(merged_df, "project datasets/Monthly_features_with_violence_normalized.csv", row.names = FALSE)
+print(head(merged_df))
+
+```
+
