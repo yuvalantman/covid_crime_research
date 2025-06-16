@@ -466,4 +466,177 @@ write.csv(full_df, "project datasets/Monthly_features_one_indicator.csv", row.na
 
 ```
 
+```{r}
+library(tidyverse)
+library(readr)
+library(cluster)
+
+# 1. טעינת הנתונים
+data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
+
+# 2. בחירת פיצ'רים למדיניות (בלי DV)
+features_for_clustering <- data %>%
+  select(Total_lockdown_length, 
+         Lockdown_severity, 
+         Monthly_income_support, 
+         Monthly_workplace_closures_severity, 
+         Monthly_death_rates_per_million_people)
+
+# 3. נרמול המשתנים (כי הם בסקאלות שונות)
+features_scaled <- scale(features_for_clustering)
+
+# 4. הרצת KMeans (למשל נתחיל עם k=3)
+set.seed(123)  # כדי שהתוצאה תחזור על עצמה
+kmeans_result <- kmeans(features_scaled, centers = 3, nstart = 25)
+
+# 5. הוספת תוצאות הקלאסטר לטבלה המקורית
+data$cluster <- kmeans_result$cluster
+
+# 6. ניתוח — DV ממוצע בכל קלאסטר
+dv_summary <- data %>%
+  group_by(cluster) %>%
+  summarise(
+    mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
+    mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
+    mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE)
+  )
+
+# תצוגה של תוצאות הסיכום
+print(dv_summary)
+
+```
+
+
+```{r}
+library(tidyverse)
+library(readr)
+library(cluster)
+
+# 1. טעינת הנתונים
+data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
+
+# 2. בחירת פיצ'רים למדיניות (בלי DV)
+features_for_clustering <- data %>%
+  select(Total_lockdown_length, 
+         Lockdown_severity, 
+         Monthly_workplace_closures_severity, 
+         Monthly_death_rates_per_million_people)
+
+# 3. נרמול המשתנים (כי הם בסקאלות שונות)
+features_scaled <- scale(features_for_clustering)
+
+# 4. הרצת KMeans (למשל נתחיל עם k=3)
+set.seed(123)  # כדי שהתוצאה תחזור על עצמה
+kmeans_result <- kmeans(features_scaled, centers = 3, nstart = 25)
+
+# 5. הוספת תוצאות הקלאסטר לטבלה המקורית
+data$cluster <- kmeans_result$cluster
+
+# 6. ניתוח — DV ממוצע בכל קלאסטר
+dv_summary <- data %>%
+  group_by(cluster) %>%
+  summarise(
+    mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
+    mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
+    mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE)
+  )
+
+# תצוגה של תוצאות הסיכום
+print(dv_summary)
+
+```
+```{r}
+library(tidyverse)
+library(cluster)
+library(mclust)  # ספריה לחישוב Adjusted Rand Index
+
+
+# טוענים את הדאטה
+data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
+
+# נגדיר בסיס
+base_features <- c("Total_lockdown_length", "Lockdown_severity")
+optional_features <- c("Monthly_income_support", 
+                       "Monthly_workplace_closures_severity", 
+                       "Monthly_death_rates_per_million_people")
+
+run_kmeans <- function(selected_features, k=3) {
+  features <- data %>% select(all_of(selected_features))
+  scaled <- scale(features)
+  set.seed(123)
+  kmeans(scaled, centers=k, nstart=25)
+}
+
+# רשימת ריצות
+results <- list()
+
+# ריצת בסיס עם כל המשתנים
+all_features <- c(base_features, optional_features)
+results[["All features"]] <- run_kmeans(all_features)
+
+# ריצות עם כל משתנה מושמט
+for (excluded in optional_features) {
+  features_now <- setdiff(optional_features, excluded)
+  current_features <- c(base_features, features_now)
+  label <- paste("Excluded:", excluded)
+  results[[label]] <- run_kmeans(current_features)
+}
+
+summaries <- list()
+
+for (name in names(results)) {
+  clusters <- results[[name]]$cluster
+  data_with_clusters <- data %>% mutate(cluster = clusters)
+  
+  summary <- data_with_clusters %>%
+    group_by(cluster) %>%
+    summarise(
+      mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
+      mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+      mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
+      mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE),
+      mean_lockdown_severity = mean(Lockdown_severity, na.rm = TRUE)
+      ) %>% mutate(model = name)
+  
+  summaries[[name]] <- summary
+}
+
+# מחברים הכל
+final_summary <- bind_rows(summaries)
+
+# מדפיסים
+print(final_summary)
+```
+
+```{r}
+
+cluster_all <- results[["All features"]]$cluster
+cluster_minus_income <- results[["Excluded: Monthly_income_support"]]$cluster
+cluster_minus_workplace <- results[["Excluded: Monthly_workplace_closures_severity"]]$cluster
+cluster_minus_deaths <- results[["Excluded: Monthly_death_rates_per_million_people"]]$cluster
+
+results_df <- data.frame(
+  All = cluster_all,
+  Minus_Income = cluster_minus_income,
+  Minus_Workplace = cluster_minus_workplace,
+  Minus_Deaths = cluster_minus_deaths
+)
+
+# נחשב ARI מול המודל המלא עבור כל ריצה
+ari_income <- adjustedRandIndex(results_df$All, results_df$Minus_Income)
+ari_workplace <- adjustedRandIndex(results_df$All, results_df$Minus_Workplace)
+ari_deaths <- adjustedRandIndex(results_df$All, results_df$Minus_Deaths)
+
+# בונים טבלה של ההשוואה
+ari_table <- tibble(
+  Model = c("Minus Income", "Minus Workplace", "Minus Deaths"),
+  ARI = c(ari_income, ari_workplace, ari_deaths)
+)
+
+# מציגים
+print(ari_table)
+
+```
 
