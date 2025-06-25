@@ -466,177 +466,145 @@ write.csv(full_df, "project datasets/Monthly_features_one_indicator.csv", row.na
 
 ```
 
-```{r}
-library(tidyverse)
-library(readr)
-library(cluster)
-
-# 1. טעינת הנתונים
-data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
-
-# 2. בחירת פיצ'רים למדיניות (בלי DV)
-features_for_clustering <- data %>%
-  select(Total_lockdown_length, 
-         Lockdown_severity, 
-         Monthly_income_support, 
-         Monthly_workplace_closures_severity, 
-         Monthly_death_rates_per_million_people)
-
-# 3. נרמול המשתנים (כי הם בסקאלות שונות)
-features_scaled <- scale(features_for_clustering)
-
-# 4. הרצת KMeans (למשל נתחיל עם k=3)
-set.seed(123)  # כדי שהתוצאה תחזור על עצמה
-kmeans_result <- kmeans(features_scaled, centers = 3, nstart = 25)
-
-# 5. הוספת תוצאות הקלאסטר לטבלה המקורית
-data$cluster <- kmeans_result$cluster
-
-# 6. ניתוח — DV ממוצע בכל קלאסטר
-dv_summary <- data %>%
-  group_by(cluster) %>%
-  summarise(
-    mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
-    mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
-    mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
-    mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE)
-  )
-
-# תצוגה של תוצאות הסיכום
-print(dv_summary)
-
-```
-
-
-```{r}
-library(tidyverse)
-library(readr)
-library(cluster)
-
-# 1. טעינת הנתונים
-data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
-
-# 2. בחירת פיצ'רים למדיניות (בלי DV)
-features_for_clustering <- data %>%
-  select(Total_lockdown_length, 
-         Lockdown_severity, 
-         Monthly_workplace_closures_severity, 
-         Monthly_death_rates_per_million_people)
-
-# 3. נרמול המשתנים (כי הם בסקאלות שונות)
-features_scaled <- scale(features_for_clustering)
-
-# 4. הרצת KMeans (למשל נתחיל עם k=3)
-set.seed(123)  # כדי שהתוצאה תחזור על עצמה
-kmeans_result <- kmeans(features_scaled, centers = 3, nstart = 25)
-
-# 5. הוספת תוצאות הקלאסטר לטבלה המקורית
-data$cluster <- kmeans_result$cluster
-
-# 6. ניתוח — DV ממוצע בכל קלאסטר
-dv_summary <- data %>%
-  group_by(cluster) %>%
-  summarise(
-    mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
-    mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
-    mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
-    mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE)
-  )
-
-# תצוגה של תוצאות הסיכום
-print(dv_summary)
-
-```
-```{r}
-library(tidyverse)
-library(cluster)
-library(mclust)  # ספריה לחישוב Adjusted Rand Index
-
-
-# טוענים את הדאטה
-data <- read.csv("project datasets/Monthly_features_with_all_data.csv")
-
-# נגדיר בסיס
-base_features <- c("Total_lockdown_length", "Lockdown_severity")
-optional_features <- c("Monthly_income_support", 
-                       "Monthly_workplace_closures_severity", 
-                       "Monthly_death_rates_per_million_people")
-
-run_kmeans <- function(selected_features, k=3) {
-  features <- data %>% select(all_of(selected_features))
-  scaled <- scale(features)
-  set.seed(123)
-  kmeans(scaled, centers=k, nstart=25)
-}
-
-# רשימת ריצות
-results <- list()
-
-# ריצת בסיס עם כל המשתנים
-all_features <- c(base_features, optional_features)
-results[["All features"]] <- run_kmeans(all_features)
-
-# ריצות עם כל משתנה מושמט
-for (excluded in optional_features) {
-  features_now <- setdiff(optional_features, excluded)
-  current_features <- c(base_features, features_now)
-  label <- paste("Excluded:", excluded)
-  results[[label]] <- run_kmeans(current_features)
-}
-
-summaries <- list()
-
-for (name in names(results)) {
-  clusters <- results[[name]]$cluster
-  data_with_clusters <- data %>% mutate(cluster = clusters)
   
-  summary <- data_with_clusters %>%
-    group_by(cluster) %>%
-    summarise(
-      mean_dv = mean(Violence_per_million_people, na.rm = TRUE),
-      mean_deaths = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
-      mean_income_support = mean(Monthly_income_support, na.rm = TRUE),
-      mean_lockdown_length = mean(Total_lockdown_length, na.rm = TRUE),
-      mean_lockdown_severity = mean(Lockdown_severity, na.rm = TRUE)
-      ) %>% mutate(model = name)
-  
-  summaries[[name]] <- summary
-}
 
-# מחברים הכל
-final_summary <- bind_rows(summaries)
+```{r}
+# ===================== שלב 1: טעינת ספריות =====================
+library(tidymodels)
+library(themis)         # SMOTE
+library(rpart.plot)     # עץ החלטה
+library(MLmetrics)      # F1 Score
+library(caret)          # Confusion Matrix
+library(ranger)         # Random Forest
 
-# מדפיסים
-print(final_summary)
+# ===================== שלב 2: קריאת הנתונים וניקוי =====================
+data <- read.csv("../Final working datasets/Monthly_features_with_all_data.csv")
+
+# הסרת עמודות עם יותר מ־20% NA
+na_thresh <- 0.2 * nrow(data)
+na_counts <- sapply(data, function(x) sum(is.na(x)))
+data <- data[, na_counts <= na_thresh]
+
+# השלמות חכמות
+data$Violence_Value[is.na(data$Violence_Value)] <- median(data$Violence_Value, na.rm = TRUE)
+data$Violence_per_million_people[is.na(data$Violence_per_million_people)] <- median(data$Violence_per_million_people, na.rm = TRUE)
+data$dv_percent_change_baseline[is.na(data$dv_percent_change_baseline)] <- mean(data$dv_percent_change_baseline, na.rm = TRUE)
+
+# המרות לפקטורים
+data$Entity <- as.factor(data$Entity)
+data$Month <- as.factor(data$Month)
+data$Region <- as.factor(data$Region)
+data$Sub.region <- as.factor(data$Sub.region)
+data$Indicator <- as.factor(data$Indicator)
+
+# ===================== שלב 3: יצירת המטרה =====================
+violence_thresh <- quantile(data$Violence_per_million_people, 0.75, na.rm = TRUE)
+data$high_violence <- as.factor(ifelse(data$Violence_per_million_people > violence_thresh, 1, 0))
+
+# ===================== שלב 4: חלוקה ל־train/test =====================
+set.seed(123)
+split_v <- initial_split(data, strata = high_violence)
+train_v <- training(split_v)
+test_v  <- testing(split_v)
+
+# ===================== שלב 5: Recipe לפיצ'רים נבחרים =====================
+rec_viol <- recipe(high_violence ~ Total_lockdown_length + Lockdown_severity +
+                     Monthly_income_support + Monthly_workplace_closures_severity +
+                     long_lockdown + previous_month_connected_lockdown +
+                     lockdown_intensity_per_day,
+                   data = train_v) %>%
+  step_smote(high_violence)
+
+# ===================== שלב 6: הכנה לאימון =====================
+prep_v <- prep(rec_viol)
+train_v_bal <- juice(prep_v)
+
+# ===================== שלב 7: אימון Random Forest =====================
+rf_model <- rand_forest(mode = "classification", trees = 500) %>%
+  set_engine("ranger")
+
+rf_fit <- rf_model %>%
+  fit(high_violence ~ ., data = train_v_bal)
+
+# ===================== שלב 8: בדיקה על סט הבדיקה =====================
+test_v_proc <- bake(prep_v, new_data = test_v)
+preds_v <- predict(rf_fit, new_data = test_v_proc) %>% pull(.pred_class)
+
+# ===================== שלב 9: תוצאות =====================
+print(confusionMatrix(preds_v, test_v_proc$high_violence))
+cat("F1 Score (Violence): ", F1_Score(y_pred = preds_v, y_true = test_v_proc$high_violence, positive = "1"), "\n")
+# ===================== שלב 7: אימון Random Forest =====================
+rf_model <- rand_forest(mode = "classification", trees = 500) %>%
+  set_engine("ranger", importance = "impurity")
+
+rf_fit <- rf_model %>%
+  fit(high_violence ~ ., data = train_v_bal)
+
+# ===================== שלב 8: חשיבות משתנים =====================
+cat("=== חשיבות משתנים למודל אלימות ===\n")
+vi <- rf_fit$fit$variable.importance
+print(sort(vi, decreasing = TRUE))
+
 ```
 
 ```{r}
+# ========== שלב 1: ספריות ==========
+library(tidymodels)
+library(themis)      # SMOTE
+library(ranger)      # Random Forest
+library(caret)       # confusionMatrix
+library(MLmetrics)   # F1 Score
 
-cluster_all <- results[["All features"]]$cluster
-cluster_minus_income <- results[["Excluded: Monthly_income_support"]]$cluster
-cluster_minus_workplace <- results[["Excluded: Monthly_workplace_closures_severity"]]$cluster
-cluster_minus_deaths <- results[["Excluded: Monthly_death_rates_per_million_people"]]$cluster
+# ========== שלב 2: קריאת קובץ וטיוב ==========
+data <- read.csv("../Final working datasets/Monthly_features_with_all_data.csv")
 
-results_df <- data.frame(
-  All = cluster_all,
-  Minus_Income = cluster_minus_income,
-  Minus_Workplace = cluster_minus_workplace,
-  Minus_Deaths = cluster_minus_deaths
-)
+na_thresh <- 0.2 * nrow(data)
+na_counts <- sapply(data, function(x) sum(is.na(x)))
+data <- data[, na_counts <= na_thresh]
 
-# נחשב ARI מול המודל המלא עבור כל ריצה
-ari_income <- adjustedRandIndex(results_df$All, results_df$Minus_Income)
-ari_workplace <- adjustedRandIndex(results_df$All, results_df$Minus_Workplace)
-ari_deaths <- adjustedRandIndex(results_df$All, results_df$Minus_Deaths)
+# השלמות חסרים
+data$Violence_Value[is.na(data$Violence_Value)] <- median(data$Violence_Value, na.rm = TRUE)
+data$Violence_per_million_people[is.na(data$Violence_per_million_people)] <- median(data$Violence_per_million_people, na.rm = TRUE)
+data$dv_percent_change_baseline[is.na(data$dv_percent_change_baseline)] <- mean(data$dv_percent_change_baseline, na.rm = TRUE)
 
-# בונים טבלה של ההשוואה
-ari_table <- tibble(
-  Model = c("Minus Income", "Minus Workplace", "Minus Deaths"),
-  ARI = c(ari_income, ari_workplace, ari_deaths)
-)
+# ========== שלב 3: יצירת מטרות ==========
+death_thresh <- quantile(data$Monthly_death_rates_per_million_people, 0.75, na.rm = TRUE)
+data$high_death <- as.factor(ifelse(data$Monthly_death_rates_per_million_people > death_thresh, 1, 0))
 
-# מציגים
-print(ari_table)
+# ========== שלב 4: חלוקה ==========
+set.seed(123)
+split_d <- initial_split(data, strata = high_death)
+train_d <- training(split_d)
+test_d  <- testing(split_d)
+
+# ========== שלב 5: בניית recipe ==========
+rec_death <- recipe(high_death ~ Total_lockdown_length + Lockdown_severity +
+                    Monthly_income_support + Monthly_workplace_closures_severity +
+                    long_lockdown + previous_month_connected_lockdown +
+                    lockdown_intensity_per_day,
+                    data = train_d) %>%
+  step_smote(high_death)
+
+# ========== שלב 6: הכנה ואימון ==========
+prep_d <- prep(rec_death)
+train_d_bal <- juice(prep_d)
+
+model_rf_d <- rand_forest(mode = "classification", trees = 500) %>%
+  set_engine("ranger") %>%
+  fit(high_death ~ ., data = train_d_bal)
+
+# ========== שלב 7: תחזוי וביצועים ==========
+preds_d <- predict(model_rf_d, new_data = test_d) %>% pull(.pred_class)
+confusionMatrix(preds_d, test_d$high_death)
+F1_Score(preds_d, test_d$high_death, positive = "1")
+model_rf_d <- rand_forest(mode = "classification", trees = 500) %>%
+  set_engine("ranger", importance = "impurity") %>%
+  fit(high_death ~ ., data = train_d_bal)
+
+# ===================== שלב 8: חשיבות משתנים =====================
+cat("=== חשיבות משתנים למודל תמותה ===\n")
+vi_d <- model_rf_d$fit$variable.importance
+print(sort(vi_d, decreasing = TRUE))
 
 ```
 
