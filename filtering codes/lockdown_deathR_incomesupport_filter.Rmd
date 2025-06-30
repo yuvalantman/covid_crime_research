@@ -317,7 +317,7 @@ print(head(merged_df))
 
 ```
 ```{r}
-full_df <- read.csv("project datasets/Monthly_features_with_violence_normalized.csv")
+full_df <- read.csv("C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/Final working datasets/Monthly_features_with_violence_normalized.csv")
 
 full_df <- full_df %>%
   mutate(Total_lockdown_length = replace_na(Total_lockdown_length, 0),
@@ -360,7 +360,7 @@ full_df <- full_df %>%
          lag_violence = replace_na(lag_violence, 0))
 full_df <- full_df %>%
   filter(Entity != "maldives", Entity != "lebanon")
-write.csv(full_df, "project datasets/Monthly_features_with_all_data.csv", row.names = FALSE)
+#write.csv(full_df, "project datasets/Monthly_features_with_all_data.csv", row.names = FALSE)
 ```
 
 ```{r}
@@ -372,12 +372,12 @@ indicator_summary <- full_df %>%
   arrange(Entity, desc(non_na_count))
 
 # Step 2: Export this to CSV so you can choose one indicator per country
-write.csv(indicator_summary, "indicator_choices.csv", row.names = FALSE)
+#write.csv(indicator_summary, "indicator_choices.csv", row.names = FALSE)
 
 
 ```
 ```{r}
-indicator_choices <- read.csv("indicator_choices.csv")
+indicator_choices <- read.csv("C:/Users/yuval/OneDrive/מסמכים/BGU/4th_semester/data_analysis/research/working datasets/indicator_choices.csv")
 
 # Step 2: Split into two parts
 # A. Regular countries where keep == 1
@@ -462,7 +462,8 @@ full_df_updated <- final_indicators_df %>%
 final_working_df <- bind_rows(full_df_updated, eswatini_df)
 ```
 ```{r}
-write.csv(full_df, "project datasets/Monthly_features_one_indicator.csv", row.names = FALSE)
+save_path <- file.path("..", "Final working datasets", "Monthly_features_one_indicator.csv")
+write.csv(final_working_df, save_path, row.names = FALSE)
 
 ```
 
