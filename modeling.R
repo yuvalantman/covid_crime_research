@@ -246,10 +246,63 @@ summary(model_dv_spline)
 summary(model_death_spline)
 summary(model_harm_spline)
 
-saveRDS(model_dv_spline, "model_dv_quad.rds")
-saveRDS(model_death_spline, "model_death_quad.rds")
-saveRDS(model_harm_spline, "model_harm_spline.rds")  # if defined
+saveRDS(model_dv_spline, "models/model_dv_spline.rds")
+saveRDS(model_death_spline, "models/model_death_spline.rds")
+saveRDS(model_harm_spline, "models/model_harm_spline.rds")  # if defined
 
+
+# Final Report Plot for DV, Death, and Composite Harm (Spline Models)
+library(cowplot)
+
+# Build spline predictions for visual clarity
+spline_df <- scaled_df %>%
+  select(long_lockdown, dv_scaled, death_scaled, composite_harm) #%>%
+  #drop_na()
+
+spline_models <- list(
+  dv = lm(dv_scaled ~ ns(long_lockdown, df = 4), data = spline_df),
+  death = lm(death_scaled ~ ns(long_lockdown, df = 4), data = spline_df),
+  harm = lm(composite_harm ~ ns(long_lockdown, df = 4), data = spline_df)
+)
+
+lockdown_range <- range(spline_df$long_lockdown, na.rm = TRUE)
+pred_grid <- tibble(long_lockdown = seq(lockdown_range[1], lockdown_range[2], by = 1)) %>%
+  mutate(
+    dv_pred = predict(spline_models$dv, newdata = .),
+    death_pred = predict(spline_models$death, newdata = .),
+    harm_pred = predict(spline_models$harm, newdata = .)
+  )
+
+optimal_day <- pred_grid$long_lockdown[which.min(pred_grid$harm_pred)]
+
+# Create a minimalist, clean, publication-ready spline plot
+ggplot(pred_grid, aes(x = long_lockdown)) +
+  geom_line(aes(y = dv_pred, color = "Domestic Violence"), size = 1.3) +
+  geom_line(aes(y = death_pred, color = "COVID Death Rate"), size = 1.3) +
+  geom_line(aes(y = harm_pred, color = "Composite Harm"), size = 1.4, linetype = "solid") +
+  geom_vline(xintercept = optimal_day, linetype = "dashed", color = "black") +
+  annotate("text", x = optimal_day + 2, y = max(pred_grid$harm_pred, na.rm = TRUE),
+           label = paste("Optimal:", optimal_day, "days"), hjust = 0, size = 4) +
+  scale_color_manual(values = c("Domestic Violence" = "firebrick", "COVID Death Rate" = "steelblue", "Composite Harm" = "black")) +
+  labs(
+    title = "Nonlinear Relationship Between Lockdown Length and Harm Outcomes",
+    subtitle = "Spline models fitted to scaled outcomes; optimal composite duration marked",
+    x = "Lockdown Length (days)", y = "Scaled Value", color = NULL
+  ) +
+  coord_cartesian(xlim = c(min(spline_df$long_lockdown), min(100, max(spline_df$long_lockdown) + 5))) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 11, hjust = 0.5),
+    legend.position = "top",
+    legend.text = element_text(size = 11)
+  )
+
+
+
+
+
+# tried GAM models as well
 
 # GAM models for DV, Death, and Composite Harm
 gam_dv <- gam(dv_scaled ~ s(long_lockdown), data = scaled_df)
