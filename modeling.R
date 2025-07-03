@@ -298,7 +298,9 @@ ggplot(pred_grid, aes(x = long_lockdown)) +
     legend.text = element_text(size = 11)
   )
 
-
+summary(spline_models$dv)
+summary(spline_models$death)
+summary(spline_models$harm)
 
 
 
@@ -336,3 +338,66 @@ ggplot(pred_data_gam, aes(x = long_lockdown)) +
 summary(gam_death)
 summary(gam_dv)
 summary(gam_harm)
+
+
+
+
+scaled_prev_df <- scaled_df %>%
+  filter(Month >= "2020-04", long_lockdown > 0) %>%
+  filter(!is.na(dv_percent_change_baseline), !is.na(death_pct_change_prev))
+
+scaled_prev_df <- scaled_prev_df %>%
+  group_by(Entity) %>%
+  mutate(
+    dv_prev_scaled = if (n() == 1) 0 else as.numeric(scale(dv_percent_change_baseline)),
+    death_prev_scaled = if (n() == 1) 0 else as.numeric(scale(death_pct_change_prev)),
+    composite_prev_harm = dv_prev_scaled + death_prev_scaled
+  ) %>%
+  ungroup()
+
+spline_prev_df <- scaled_prev_df %>%
+  select(long_lockdown, dv_prev_scaled, death_prev_scaled, composite_prev_harm) #%>%
+#drop_na()
+
+spline_prev_models <- list(
+  dv = lm(dv_prev_scaled ~ ns(long_lockdown, df = 4), data = spline_prev_df),
+  death = lm(death_prev_scaled ~ ns(long_lockdown, df = 4), data = spline_prev_df),
+  harm = lm(composite_prev_harm ~ ns(long_lockdown, df = 4), data = spline_prev_df)
+)
+
+lockdown_prev_range <- range(spline_prev_df$long_lockdown, na.rm = TRUE)
+pred_prev_grid <- tibble(long_lockdown = seq(lockdown_prev_range[1], lockdown_prev_range[2], by = 1)) %>%
+  mutate(
+    dv_pred = predict(spline_prev_models$dv, newdata = .),
+    death_pred = predict(spline_prev_models$death, newdata = .),
+    harm_pred = predict(spline_prev_models$harm, newdata = .)
+  )
+
+optimal_prev_day <- pred_prev_grid$long_lockdown[which.min(pred_prev_grid$harm_pred)]
+
+# Create a minimalist, clean, publication-ready spline plot
+ggplot(pred_prev_grid, aes(x = long_lockdown)) +
+  geom_line(aes(y = dv_pred, color = "Domestic Violence"), size = 1.3) +
+  geom_line(aes(y = death_pred, color = "COVID Death Rate"), size = 1.3) +
+  geom_line(aes(y = harm_pred, color = "Composite Harm"), size = 1.4, linetype = "solid") +
+  geom_vline(xintercept = optimal_prev_day, linetype = "dashed", color = "black") +
+  annotate("text", x = optimal_prev_day + 2, y = max(pred_prev_grid$harm_pred, na.rm = TRUE),
+           label = paste("Optimal:", optimal_prev_day, "days"), hjust = 0, size = 4) +
+  scale_color_manual(values = c("Domestic Violence" = "firebrick", "COVID Death Rate" = "steelblue", "Composite Harm" = "black")) +
+  labs(
+    title = "Nonlinear Relationship Between Lockdown Length and Harm Outcomes",
+    subtitle = "Spline models fitted to scaled outcomes; optimal composite duration marked",
+    x = "Lockdown Length (days)", y = "Scaled Value", color = NULL
+  ) +
+  coord_cartesian(xlim = c(min(spline_prev_df$long_lockdown), min(100, max(spline_prev_df$long_lockdown) + 5))) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 11, hjust = 0.5),
+    legend.position = "top",
+    legend.text = element_text(size = 11)
+  )
+
+summary(spline_prev_models$dv)
+summary(spline_prev_models$death)
+summary(spline_prev_models$harm)
