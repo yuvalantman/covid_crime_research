@@ -76,7 +76,7 @@ df <- read.csv("../Final working datasets/yuval_after_engineering_try/lockdown_s
 df_box <- df %>%
   filter(!is.na(dv_pct_change_post_vs_during),
          !is.na(max_long_lockdown),
-         max_long_lockdown <= 90) %>%   # 🔍 חותכים עד 90 בלבד
+         max_long_lockdown <= 90) %>%   
   mutate(lockdown_group = cut(
     max_long_lockdown,
     breaks = c(0, 30, 53, 90),
