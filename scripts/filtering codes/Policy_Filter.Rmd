@@ -1,0 +1,308 @@
+---
+title: "domestic violence & covid‑19 — enhanced data prep & feature engineering"
+output: html_document
+---
+
+# load packages we need for the whole project
+```{r setup, message=FALSE, warning=FALSE}
+# core packages for data analysis
+library(tidyverse)
+library(lubridate)
+library(corrplot)
+library(cluster)
+library(broom)
+
+# print current working directory so we know where we are
+cat("working in:", getwd(), "\n")
+```
+
+# load datasets & quick data exploration
+```{r data-load}
+# simple file loading that matches your actual file structure
+# based on your other files, you keep processed data in current directory
+
+# first, let's see what files we actually have in current directory
+cat("files in current directory:\n")
+print(list.files(pattern = "*.csv"))
+
+# try to load the main files - these should be in your current directory 
+# since that's how you use files in your other scripts
+tryCatch({
+  dv_data <- read_csv("data/Monthly_features_one_indicator.csv")
+  dv_all_data <- read_csv("data/Monthly_features_with_all_data.csv")
+  message("loaded files from current directory")
+}, error = function(e) {
+  # if not in current directory, check your DATA folder
+  tryCatch({
+    dv_data <<- read_csv("data/Monthly_features_one_indicator.csv")
+    dv_all_data <<- read_csv("data/Monthly_features_with_all_data.csv")
+    message("loaded files from DATA folder")
+  }, error = function(e2) {
+    cat("could not find files. please copy them to current directory or check file names:\n")
+    cat("looking for: Monthly_features_one_indicator.csv\n")
+    cat("looking for: Monthly_features_with_all_data.csv\n")
+    cat("current directory:", getwd(), "\n")
+    stop("files not found")
+  })
+})
+
+# quick look at what we're working with
+glimpse(dv_data)
+cat("main dataset:", dim(dv_data), "rows x cols\n")
+cat("extended dataset:", dim(dv_all_data), "rows x cols\n")
+
+# checking for duplicate entries that might mess up our analysis
+duplicates_check <- dv_all_data %>%
+  group_by(Entity, Month, Indicator) %>%
+  summarise(n_rows = n(), .groups = "drop") %>%
+  filter(n_rows > 1)
+
+cat("duplicate entries found:", nrow(duplicates_check), "\n")
+```
+
+# data cleaning & standardization
+```{r cleaning}
+# creating proper date variables and handling missing values
+# turning months into actual dates makes time series analysis much easier
+
+dv_clean <- dv_data %>%
+  mutate(
+    # convert month to proper date format
+    Month_date = as.Date(paste0(Month, "-01")),
+    Year = year(Month_date),
+    Month_num = month(Month_date),
+    
+    # standardize country names (lowercase, trimmed)
+    Entity = str_to_lower(str_trim(Entity)),
+    
+    # replace missing values with zeros where it makes sense
+    Total_lockdown_length = replace_na(Total_lockdown_length, 0),
+    Monthly_income_support = replace_na(Monthly_income_support, 0),
+    Monthly_death_rates_per_million_people = replace_na(Monthly_death_rates_per_million_people, 0)
+  ) %>%
+  
+  # create pandemic period indicators - this is crucial for our analysis
+  mutate(
+    pandemic_period = case_when(
+      Month_date <= as.Date("2020-02-01") ~ "pre_pandemic",
+      Month_date >= as.Date("2020-03-01") & Month_date <= as.Date("2020-04-01") ~ "early_pandemic", 
+      Month_date >= as.Date("2020-05-01") & Month_date <= as.Date("2020-06-01") ~ "mid_pandemic",
+      Month_date >= as.Date("2020-07-01") ~ "late_pandemic"
+    ),
+    pandemic_period = factor(pandemic_period, 
+                           levels = c("pre_pandemic", "early_pandemic", "mid_pandemic", "late_pandemic")),
+    
+    # binary pandemic indicator
+    is_pandemic = ifelse(Month_date >= as.Date("2020-03-01"), 1, 0),
+    
+    # months since pandemic started - useful for time trends
+    months_since_pandemic = ifelse(is_pandemic == 1,
+                                 as.numeric(Month_date - as.Date("2020-03-01")) / 30.44, 
+                                 NA)
+  ) %>%
+  
+  # remove rows with missing key variables
+  filter(!is.na(Violence_Value), !is.na(Entity)) %>%
+  arrange(Entity, Month_date)
+
+cat("cleaned dataset ready with", nrow(dv_clean), "observations\n")
+```
+
+# feature engineering - creating interaction & derived variables  
+```{r feature-engineering}
+# building sophisticated features that capture policy interactions
+# these help us understand how different policies work together
+
+dv_features <- dv_clean %>%
+  group_by(Entity) %>%
+  arrange(Month_date) %>%
+  mutate(
+    # policy interaction features - key for understanding combined effects
+    policy_economic_interaction = lockdown_intensity_per_day * Monthly_income_support,
+    policy_health_interaction = lockdown_intensity_per_day * Monthly_death_rates_per_million_people,
+    cumulative_stress_interaction = Total_lockdown_length * lag_deaths_per_million,
+    
+    # lag variables to capture delayed effects
+    prev_lockdown_intensity = lag(lockdown_intensity_per_day, 1),
+    lockdown_escalation = lockdown_intensity_per_day - prev_lockdown_intensity,
+    economic_support_change = Monthly_income_support - lag(Monthly_income_support, 1),
+    
+    # cumulative measures - important for capturing build-up effects
+    cumulative_lockdown_days = cumsum(replace_na(Total_lockdown_length, 0)),
+    cumulative_deaths = cumsum(replace_na(Monthly_death_rates_per_million_people, 0)),
+    
+    # baseline comparisons - this is how we measure impact
+    baseline_dv = ifelse(pandemic_period == "pre_pandemic", Violence_per_million_people, NA),
+    baseline_dv = mean(baseline_dv, na.rm = TRUE),
+    dv_change_from_baseline = (Violence_per_million_people - baseline_dv) / baseline_dv * 100,
+    
+    # standardized scores for comparing across countries
+    dv_z_score = scale(Violence_per_million_people)[,1],
+    lockdown_z_score = scale(lockdown_intensity_per_day)[,1], 
+    economic_z_score = scale(Monthly_income_support)[,1]
+  ) %>%
+  ungroup()
+
+cat("feature engineering complete - added", 
+    ncol(dv_features) - ncol(dv_clean), "new variables\n")
+```
+
+# country clustering for policy typology classification
+```{r clustering}
+# this is where we create the "restrictive vs moderate" classification
+# using k-means clustering on early pandemic policy responses
+
+set.seed(123)  # for reproducible results
+
+# calculate country-level policy characteristics during pandemic
+cluster_vars <- dv_features %>%
+  filter(is_pandemic == 1) %>%
+  group_by(Entity, Region) %>%
+  summarise(
+    # lockdown characteristics
+    early_lockdown_intensity = mean(lockdown_intensity_per_day[pandemic_period == "early_pandemic"], na.rm = TRUE),
+    avg_lockdown_intensity = mean(lockdown_intensity_per_day, na.rm = TRUE),
+    max_lockdown_length = max(Total_lockdown_length, na.rm = TRUE),
+    
+    # economic support patterns
+    avg_economic_support = mean(Monthly_income_support, na.rm = TRUE),
+    max_economic_support = max(Monthly_income_support, na.rm = TRUE),
+    economic_support_consistency = sd(Monthly_income_support, na.rm = TRUE),
+    
+    # health impact measures
+    total_death_burden = sum(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    peak_death_rate = max(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    
+    # domestic violence outcomes  
+    avg_dv_change = mean(dv_change_from_baseline, na.rm = TRUE),
+    max_dv_increase = max(dv_change_from_baseline, na.rm = TRUE),
+    dv_volatility = sd(dv_change_from_baseline, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# prepare clustering matrix with key policy dimensions
+cluster_mat <- cluster_vars %>%
+  select(early_lockdown_intensity, avg_economic_support, total_death_burden) %>%
+  scale()
+
+# find optimal number of clusters using elbow method
+wss <- map_dbl(1:6, ~kmeans(cluster_mat, centers = .x, nstart = 20)$tot.withinss)
+
+# perform k-means clustering (4 clusters works well for our policy types)
+k_clusters <- kmeans(cluster_mat, centers = 4, nstart = 20)
+
+# create policy response typology based on clustering results
+country_profiles <- cluster_vars %>%
+  mutate(
+    cluster_id = k_clusters$cluster,
+    policy_response_type = case_when(
+      cluster_id == 1 ~ "Quick_Strong",      # fast, intense response
+      cluster_id == 2 ~ "Gradual_Moderate",  # slower, moderate response  
+      cluster_id == 3 ~ "Minimal_Response",  # light touch approach
+      cluster_id == 4 ~ "Economic_Focus"     # emphasis on economic support
+    ),
+    policy_response_type = factor(policy_response_type)
+  )
+
+# show how countries distributed across policy types
+cat("policy response distribution:\n")
+print(table(country_profiles$policy_response_type))
+```
+
+# merge policy typology back & create final indicators
+```{r merge-final}
+# bringing everything together and creating our key binary classification
+dv_final <- dv_features %>%
+  left_join(country_profiles %>%
+              select(Entity, policy_response_type, avg_economic_support, avg_lockdown_intensity),
+            by = "Entity") %>%
+  
+  # create binary and categorical policy indicators for analysis
+  mutate(
+    # binary indicators based on median splits
+    high_economic_support = ifelse(Monthly_income_support > median(Monthly_income_support[is_pandemic == 1], na.rm = TRUE), 1, 0),
+    high_lockdown_intensity = ifelse(lockdown_intensity_per_day > median(lockdown_intensity_per_day[is_pandemic == 1], na.rm = TRUE), 1, 0),
+    
+    # create the restrictive vs moderate classification we use in analysis
+    # restrictive = countries that had strong lockdowns OR focused on economic support
+    # moderate = countries with gradual or minimal responses
+    policy_approach = case_when(
+      policy_response_type %in% c("Economic_Focus", "Quick_Strong") ~ "Restrictive",
+      policy_response_type %in% c("Gradual_Moderate", "Minimal_Response") ~ "Moderate",
+      TRUE ~ NA_character_
+    ),
+    policy_approach = factor(policy_approach, levels = c("Moderate", "Restrictive")),
+    
+    # detailed policy combination categories
+    policy_combination = case_when(
+      high_lockdown_intensity == 1 & high_economic_support == 1 ~ "High_Lock_High_Econ",
+      high_lockdown_intensity == 1 & high_economic_support == 0 ~ "High_Lock_Low_Econ", 
+      high_lockdown_intensity == 0 & high_economic_support == 1 ~ "Low_Lock_High_Econ",
+      high_lockdown_intensity == 0 & high_economic_support == 0 ~ "Low_Lock_Low_Econ"
+    ),
+    policy_combination = factor(policy_combination)
+  )
+
+# show our final classification
+cat("final policy approach classification:\n")
+print(table(dv_final$policy_approach, useNA = "ifany"))
+```
+
+# data quality assessment  
+```{r summaries}
+# checking data completeness and basic patterns
+summary_tbl <- dv_final %>%
+  summarise(
+    total_obs = n(),
+    complete_cases = sum(complete.cases(.)),
+    countries = n_distinct(Entity),
+    months = n_distinct(Month),
+    pandemic_obs = sum(is_pandemic, na.rm = TRUE),
+    pre_pandemic_obs = sum(1 - is_pandemic, na.rm = TRUE),
+    restrictive_countries = n_distinct(Entity[policy_approach == "Restrictive"]),
+    moderate_countries = n_distinct(Entity[policy_approach == "Moderate"])
+  )
+
+print("data completeness summary:")
+print(summary_tbl)
+
+# correlation among key variables during pandemic period
+correlation_vars <- dv_final %>%
+  filter(is_pandemic == 1) %>%
+  select(dv_change_from_baseline, lockdown_intensity_per_day, Monthly_income_support,
+         Monthly_death_rates_per_million_people, policy_economic_interaction) %>%
+  cor(use = "complete.obs")
+
+print("correlations among key variables:")
+print(round(correlation_vars, 3))
+
+# show how the restrictive vs moderate groups differ
+group_differences <- dv_final %>%
+  filter(is_pandemic == 1, !is.na(policy_approach)) %>%
+  group_by(policy_approach) %>%
+  summarise(
+    n_obs = n(),
+    n_countries = n_distinct(Entity),
+    avg_lockdown_intensity = mean(lockdown_intensity_per_day, na.rm = TRUE),
+    avg_economic_support = mean(Monthly_income_support, na.rm = TRUE),
+    avg_dv_change = mean(dv_change_from_baseline, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print("how restrictive vs moderate approaches differ:")
+print(group_differences)
+```
+
+# save processed datasets
+```{r save-files, eval=TRUE}
+# save processed data in current directory - matches your workflow
+# this is where you keep processed files like "merged_with_unemployment.csv"
+
+write_csv(dv_final, "data/dv_analysis_enhanced.csv")
+write_csv(country_profiles, "data/country_typology.csv")
+
+cat("saved processed datasets to current directory:\n")
+cat("- dv_analysis_enhanced.csv\n")
+cat("- country_typology.csv\n")
+cat("next step: run the modeling notebook\n")
+```

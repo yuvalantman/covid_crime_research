@@ -1,0 +1,90 @@
+---
+title: "after affect"
+output: html_document
+date: "2025-07-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+df <- read.csv("data/lockdown_summary_aftereffects.csv")
+
+df_clean <- df %>%
+  filter(!is.na(dv_pct_change_post_vs_during),
+         !is.na(max_long_lockdown),
+         max_long_lockdown <= 100) %>%
+  mutate(trend = ifelse(dv_pct_change_post_vs_during > 0, "Increase", "Decrease"))
+
+ggplot(df_clean, aes(x = max_long_lockdown,
+                     y = dv_pct_change_post_vs_during,
+                     color = trend)) +
+  geom_point(size = 3.5, alpha = 0.85, shape = 21, stroke = 1.1, fill = "white") +
+  scale_color_manual(values = c("Increase" = "#E74C3C", "Decrease" = "#3498DB")) +
+  geom_smooth(method = "lm", se = TRUE, color = "#2C3E50", linetype = "solid", size = 1.5) +
+  labs(
+    title = "Change in DV Following Lockdown Duration",
+    subtitle = "Increase vs. Decrease in Domestic Violence After Lockdown Compared to During",
+    x = "Lockdown Duration (days)",
+    y = "DV Change Rate After vs. During Lockdown (%)",
+    color = NULL
+  ) +
+  theme_light(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "gray30"),
+    axis.title = element_text(face = "bold"),
+    legend.position = "top",
+    legend.text = element_text(size = 12)
+  )
+
+
+```
+We wanted to examine the after-effect of lockdown duration on domestic violence by comparing post-lockdown violence rates to those during the lockdown. To do this, we used the column dv_pct_change_post_vs_during, which represents the percentage change between the average domestic violence rate during lockdown and the average rate in the months that followed. We created a scatter plot where each point represents a country, with the x-axis showing the maximum lockdown duration (max_long_lockdown) and the y-axis showing the change in violence rate. Countries were also categorized by whether their violence level increased or decreased after lockdown. One country had an exceptionally long lockdown of over 100 days, and its outlier status distorted the overall trendline. Therefore, it was excluded from the analysis. After removing that outlier, a positive linear trend emerged, suggesting that longer lockdowns tended to be associated with greater increases in domestic violence in the months that followed.
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(viridis)
+
+df <- read.csv("data/lockdown_summary_aftereffects.csv")
+
+df_box <- df %>%
+  filter(!is.na(dv_pct_change_post_vs_during),
+         !is.na(max_long_lockdown),
+         max_long_lockdown <= 90) %>%   
+  mutate(lockdown_group = cut(
+    max_long_lockdown,
+    breaks = c(0, 30, 53, 90),
+    labels = c("0–30 days", "31–53 days", "54–90 days"),
+    include.lowest = TRUE
+  ))
+
+ggplot(df_box, aes(x = lockdown_group, y = dv_pct_change_post_vs_during, fill = lockdown_group)) +
+  geom_boxplot(alpha = 0.7, outlier.color = "black", outlier.size = 2) +
+  scale_fill_viridis_d(option = "C") +
+  labs(
+    title = "DV Change After Lockdown",
+    x = "Lockdown Duration Category",
+    y = "DV Change After vs. During Lockdown (%)",
+    fill = "Lockdown Group"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.title = element_text(face = "bold"),
+    legend.position = "none"
+  )
+
+
+```
+
+We aimed to examine how domestic violence levels changed after lockdowns of varying lengths. To do this, we used the column dv_pct_change_post_vs_during, which calculates the percentage change between the average domestic violence rate during the lockdown and the average rate in the months following it. We excluded one country with an exceptionally long lockdown (over 100 days), as it was a clear outlier that could distort the results. To better detect differences across lockdown durations, we divided the countries into three groups: short (0–30 days), medium (31–53 days), and long (54–90 days). This specific cutoff at day 53 was chosen based on a separate analysis in which day 53 emerged as the optimal lockdown length for minimizing both mortality and violence. We then used a boxplot to visualize the distribution of DV change across the three groups. The results show that countries with shorter lockdowns tended to have little or no increase in violence, while countries with longer lockdowns — especially in the 54–90 day group — experienced higher increases. This pattern suggests that extended lockdowns may have contributed to more significant social aftereffects related to domestic violence.
+
