@@ -1,0 +1,509 @@
+
+# load modeling packages
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lmtest)     # robust standard errors
+library(sandwich)   # more robust standard errors  
+library(plm)        # panel data models
+library(stargazer)  # nice model output tables
+library(car)        # diagnostic tests
+library(broom)      # tidy model results
+library(performance) # model evaluation
+
+# print current working directory
+cat("working in:", getwd(), "\n")
+```
+
+# load our prepared data
+```{r data-load}
+# simple loading - processed files should be in current directory
+# this matches how you work in your other scripts
+
+tryCatch({
+  dv_enhanced <- read_csv("dv_analysis_enhanced.csv")
+  country_profiles <- read_csv("country_typology.csv")
+  message("loaded processed data from current directory")
+}, error = function(e) {
+  cat("could not find processed data files!\n")
+  cat("make sure you've run the data preparation script first (01_enhanced_data_prep.Rmd)\n") 
+  cat("looking for: dv_analysis_enhanced.csv and country_typology.csv\n")
+  cat("current directory:", getwd(), "\n")
+  stop("processed data files not found")
+})
+
+cat("loaded", nrow(dv_enhanced), "observations across", n_distinct(dv_enhanced$Entity), "countries\n")
+```
+
+# enhanced data preparation for modeling
+```{r data-prep}
+# preparing data specifically for our statistical models
+# first let's check what variables we actually have
+cat("columns in dv_enhanced:\n")
+print(colnames(dv_enhanced))
+
+# check if we have population data
+if("population" %in% colnames(dv_enhanced)) {
+  cat("found population column\n")
+} else {
+  cat("no population column found - will create dummy variable\n")
+}
+
+dv_model_ready <- dv_enhanced %>%
+  mutate(
+    Month_date = as.Date(Month_date),
+    
+    # ensure our key binary classification is clean
+    policy_approach = case_when(
+      policy_response_type %in% c("Economic_Focus", "Quick_Strong") ~ "Restrictive",
+      policy_response_type %in% c("Gradual_Moderate", "Minimal_Response") ~ "Moderate",
+      TRUE ~ NA_character_
+    ),
+    policy_approach = factor(policy_approach, levels = c("Moderate", "Restrictive")),
+    
+    # standardize continuous predictors for interpretability  
+    lockdown_intensity_std = as.numeric(scale(lockdown_intensity_per_day)),
+    economic_support_std = as.numeric(scale(Monthly_income_support)),
+    death_rate_std = as.numeric(scale(Monthly_death_rates_per_million_people)),
+    
+    # create population proxy (since Entity is country name, not population)
+    # use a simple country size proxy or set to 0 for simplicity
+    log_population_scaled = 0,  # simplified - can remove from models if needed
+    
+    # time and lockdown variables
+    lockdown_weeks = Total_lockdown_length / 7,
+    lockdown_above_3weeks = as.numeric(lockdown_weeks > 3),
+    high_death_rate = as.numeric(Monthly_death_rates_per_million_people > 50),
+    
+    # time trend
+    time_trend = as.numeric(Month_date - min(Month_date, na.rm = TRUE)) / 30,
+    
+    # baseline measures - fix the baseline calculation
+    baseline_dv_std = as.numeric(scale(replace_na(baseline_dv, mean(baseline_dv, na.rm = TRUE))))
+  ) %>%
+  filter(is_pandemic == 1, !is.na(policy_approach), !is.na(dv_change_from_baseline))
+
+# check for missing values in key variables
+cat("checking missing values in key variables:\n")
+key_vars <- c("dv_change_from_baseline", "policy_approach", "lockdown_intensity_std", 
+              "time_trend", "baseline_dv_std")
+for(var in key_vars) {
+  if(var %in% colnames(dv_model_ready)) {
+    n_missing <- sum(is.na(dv_model_ready[[var]]))
+    cat(var, ":", n_missing, "missing values\n")
+  } else {
+    cat(var, ": variable not found\n")
+  }
+}
+
+cat("model-ready dataset:", nrow(dv_model_ready), "pandemic observations\n")
+cat("complete cases for basic model:", sum(complete.cases(dv_model_ready[key_vars])), "\n")
+```
+
+# balance check between policy groups  
+```{r balance-check}
+# important to check if our restrictive vs moderate groups are comparable
+balance_table <- dv_model_ready %>%
+  group_by(policy_approach) %>%
+  summarise(
+    n_obs = n(),
+    n_countries = n_distinct(Entity),
+    
+    # dv outcomes
+    mean_dv_change = mean(dv_change_from_baseline, na.rm = TRUE),
+    sd_dv_change = sd(dv_change_from_baseline, na.rm = TRUE),
+    
+    # policy characteristics  
+    mean_lockdown_intensity = mean(lockdown_intensity_per_day, na.rm = TRUE),
+    mean_lockdown_weeks = mean(lockdown_weeks, na.rm = TRUE),
+    pct_above_3weeks = mean(lockdown_above_3weeks, na.rm = TRUE) * 100,
+    mean_economic_support = mean(Monthly_income_support, na.rm = TRUE),
+    
+    # health impacts
+    mean_death_rate = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print("balance between policy approach groups:")
+print(balance_table)
+
+# this shows us that our classification captures meaningful differences
+```
+
+# setup panel data structure
+```{r panel-setup}
+# creating panel data frame for country fixed effects models
+panel_data <- pdata.frame(dv_model_ready,
+                         index = c("Entity", "Month_date"), 
+                         drop.index = FALSE)
+
+cat("panel data ready with", length(unique(index(panel_data, "id"))), "countries\n")
+```
+
+# systematic model building progression
+```{r ols-models}
+# building models step by step to understand what matters most
+# simplified to avoid missing value issues
+
+# model 1: basic controls only
+model1_baseline <- lm(dv_change_from_baseline ~ 
+                       baseline_dv_std +
+                       time_trend,
+                     data = dv_model_ready)
+
+# model 2: add our key policy classification
+model2_policy <- lm(dv_change_from_baseline ~
+                     baseline_dv_std +
+                     time_trend +
+                     policy_approach,
+                   data = dv_model_ready)
+
+# model 3: add policy intensity measures
+model3_intensity <- lm(dv_change_from_baseline ~
+                        baseline_dv_std +
+                        time_trend +
+                        policy_approach +
+                        lockdown_intensity_std,
+                      data = dv_model_ready)
+
+# model 4: add threshold effects (our key finding)
+model4_thresholds <- lm(dv_change_from_baseline ~
+                         baseline_dv_std +
+                         time_trend +
+                         policy_approach +
+                         lockdown_intensity_std +
+                         lockdown_above_3weeks,
+                       data = dv_model_ready)
+
+# model 5: add economic support
+model5_economic <- lm(dv_change_from_baseline ~
+                       baseline_dv_std +
+                       time_trend + 
+                       policy_approach +
+                       lockdown_intensity_std +
+                       lockdown_above_3weeks +
+                       economic_support_std,
+                     data = dv_model_ready)
+
+# model 6: our final specification with interaction
+model6_final <- lm(dv_change_from_baseline ~
+                    baseline_dv_std +
+                    time_trend +
+                    policy_approach +
+                    lockdown_intensity_std +
+                    lockdown_above_3weeks +
+                    policy_approach:lockdown_intensity_std,
+                  data = dv_model_ready)
+
+cat("built 6 progressive models\n")
+
+# check if models worked
+for(i in 1:6) {
+  model_name <- paste0("model", i, if(i==1) "_baseline" else if(i==2) "_policy" else if(i==3) "_intensity" else if(i==4) "_thresholds" else if(i==5) "_economic" else "_final")
+  model_obj <- get(model_name)
+  cat(model_name, "- observations used:", nobs(model_obj), "\n")
+}
+```
+
+# panel data models for robustness
+```{r panel-models}
+# these models control for unobserved country characteristics
+
+# fixed effects model (removes country-specific factors)
+model_fe <- plm(dv_change_from_baseline ~
+                 time_trend +
+                 policy_approach +
+                 lockdown_intensity_std +
+                 lockdown_above_3weeks,
+               data = panel_data,
+               model = "within")
+
+# random effects model
+model_re <- plm(dv_change_from_baseline ~
+                 baseline_dv_std +
+                 time_trend +
+                 policy_approach +
+                 lockdown_intensity_std +
+                 lockdown_above_3weeks,
+               data = panel_data,
+               model = "random")
+
+# hausman test to choose between fe and re
+tryCatch({
+  hausman_test <- phtest(model_fe, model_re)
+  print("hausman test (fe vs re):")
+  print(hausman_test)
+}, error = function(e) {
+  cat("could not run hausman test:", e$message, "\n")
+})
+```
+
+# robust standard errors for all models
+```{r robust-se}
+# clustering standard errors by country to account for within-country correlation
+
+# function to get clustered standard errors
+get_robust_se <- function(model) {
+  if (inherits(model, "lm")) {
+    vcovCL(model, cluster = ~Entity, type = "HC1")
+  } else {
+    vcovHC(model, type = "HC1", cluster = "group") 
+  }
+}
+
+# create list of our key models
+models_list <- list(
+  "Baseline" = model1_baseline,
+  "Policy" = model2_policy, 
+  "Intensity" = model3_intensity,
+  "Thresholds" = model4_thresholds,
+  "Economic" = model5_economic,
+  "Final" = model6_final
+)
+
+# get robust standard errors for each (only for models that worked)
+robust_results <- list()
+for(name in names(models_list)) {
+  tryCatch({
+    robust_results[[name]] <- coeftest(models_list[[name]], vcov = get_robust_se(models_list[[name]]))
+    cat("robust se calculated for", name, "\n")
+  }, error = function(e) {
+    cat("error with robust se for", name, ":", e$message, "\n")
+  })
+}
+
+cat("calculated robust standard errors for", length(robust_results), "models\n")
+```
+
+# model diagnostics and comparison
+```{r diagnostics}
+# checking our models meet key assumptions
+
+# variance inflation factors for multicollinearity (only if final model worked)
+tryCatch({
+  vif_final <- vif(model6_final)
+  print("vif values (final model):")
+  print(vif_final[vif_final > 2])  # flag high vif
+}, error = function(e) {
+  cat("could not calculate vif:", e$message, "\n")
+})
+
+# model comparison table (only for models that worked)
+model_comparison <- tibble(
+  Model = character(0),
+  R2 = numeric(0),
+  Adj_R2 = numeric(0),
+  AIC = numeric(0),
+  BIC = numeric(0),
+  RMSE = numeric(0),
+  N_obs = numeric(0)
+)
+
+for(name in names(models_list)) {
+  tryCatch({
+    model <- models_list[[name]]
+    model_comparison <- model_comparison %>%
+      add_row(
+        Model = name,
+        R2 = summary(model)$r.squared,
+        Adj_R2 = summary(model)$adj.r.squared,
+        AIC = AIC(model),
+        BIC = BIC(model),
+        RMSE = sqrt(mean(residuals(model)^2)),
+        N_obs = nobs(model)
+      )
+  }, error = function(e) {
+    cat("could not get stats for model", name, ":", e$message, "\n")
+  })
+}
+
+if(nrow(model_comparison) > 0) {
+  model_comparison <- model_comparison %>%
+    mutate(
+      AIC_delta = AIC - min(AIC, na.rm = TRUE),
+      BIC_delta = BIC - min(BIC, na.rm = TRUE)
+    )
+  
+  print("model performance comparison:")
+  print(model_comparison)
+} else {
+  cat("no models succeeded\n")
+}
+```
+
+# threshold analysis - our key substantive finding
+```{r threshold-analysis}
+# examining the 3-week lockdown threshold effect by policy approach
+
+threshold_effects <- dv_model_ready %>%
+  mutate(lockdown_duration = ifelse(lockdown_above_3weeks == 1, "Above 3 weeks", "3 weeks or less")) %>%
+  group_by(policy_approach, lockdown_duration) %>%
+  summarise(
+    n_obs = n(),
+    mean_dv_change = mean(dv_change_from_baseline, na.rm = TRUE),
+    se_dv_change = sd(dv_change_from_baseline, na.rm = TRUE) / sqrt(n()),
+    median_lockdown_weeks = median(lockdown_weeks, na.rm = TRUE),
+    
+    # economic support context
+    mean_economic_support = mean(Monthly_income_support, na.rm = TRUE),
+    
+    # health context  
+    mean_death_rate = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print("threshold effects by policy approach:")
+print(threshold_effects)
+
+# calculate the key finding: difference in dv change above vs below 3 weeks
+threshold_summary <- threshold_effects %>%
+  select(policy_approach, lockdown_duration, mean_dv_change) %>%
+  pivot_wider(names_from = lockdown_duration, values_from = mean_dv_change) %>%
+  mutate(threshold_effect = `Above 3 weeks` - `3 weeks or less`)
+
+print("threshold effect (above 3 weeks - below 3 weeks):")
+print(threshold_summary)
+```
+
+# extract final model results for visualization
+```{r final-results}
+# getting clean results from our best model for plotting
+
+# check which models worked and use the best one
+if(exists("model6_final") && !is.null(model6_final)) {
+  best_model <- model6_final
+  model_name <- "Final Model"
+} else if(exists("model4_thresholds") && !is.null(model4_thresholds)) {
+  best_model <- model4_thresholds  
+  model_name <- "Thresholds Model"
+} else if(exists("model2_policy") && !is.null(model2_policy)) {
+  best_model <- model2_policy
+  model_name <- "Policy Model"
+} else {
+  stop("no models worked successfully")
+}
+
+cat("using", model_name, "for final results\n")
+
+# get coefficients with confidence intervals
+final_effects <- tidy(best_model, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(
+    significant = p.value < 0.05,
+    effect_direction = ifelse(estimate > 0, "Increase DV", "Decrease DV"),
+    effect_size_cat = case_when(
+      abs(estimate) < 5 ~ "Small",
+      abs(estimate) < 10 ~ "Medium", 
+      TRUE ~ "Large"
+    )
+  )
+
+print("final model key results:")
+print(final_effects %>% select(term, estimate, conf.low, conf.high, p.value, significant))
+
+# interaction effects specifically
+interaction_effects <- final_effects %>%
+  filter(str_detect(term, ":"))
+
+if(nrow(interaction_effects) > 0) {
+  print("interaction effects:")
+  print(interaction_effects)
+} else {
+  cat("no interaction effects in this model\n")
+}
+```
+
+# save model results for visualization
+```{r save-results}
+# saving everything we need for the visualization script
+
+# save individual model objects and results that actually worked
+save_objects <- list(
+  "final_effects" = if(exists("final_effects")) final_effects else NULL,
+  "threshold_effects" = if(exists("threshold_effects")) threshold_effects else NULL,
+  "model_comparison" = if(exists("model_comparison")) model_comparison else NULL,
+  "dv_model_ready" = dv_model_ready,
+  "balance_table" = if(exists("balance_table")) balance_table else NULL
+)
+
+# add the best model
+if(exists("best_model")) {
+  save_objects[["best_model"]] <- best_model
+}
+
+# save as RData file
+save(list = names(save_objects)[!sapply(save_objects, is.null)], 
+     file = "enhanced_statistical_models.RData")
+
+# also save as csv files for easier access (only if they exist)
+if(exists("final_effects") && !is.null(final_effects)) {
+  write_csv(final_effects, "final_model_coefficients.csv")
+}
+if(exists("threshold_effects") && !is.null(threshold_effects)) {
+  write_csv(threshold_effects, "threshold_analysis_results.csv")
+}
+if(exists("model_comparison") && !is.null(model_comparison)) {
+  write_csv(model_comparison, "model_comparison_table.csv")
+}
+
+cat("model results saved successfully\n")
+cat("next step: run the visualization notebook\n")
+```
+
+# quick summary of key findings
+```{r summary}
+cat("=== key findings summary ===\n")
+cat("1. policy approach effect:\n")
+
+policy_effect <- balance_table %>%
+  select(policy_approach, mean_dv_change) %>%
+  pivot_wider(names_from = policy_approach, values_from = mean_dv_change) %>%
+  mutate(difference = Restrictive - Moderate)
+
+cat("   restrictive:", round(policy_effect$Restrictive, 1), "% change\n")
+cat("   moderate:", round(policy_effect$Moderate, 1), "% change\n") 
+cat("   difference:", round(policy_effect$difference, 1), "percentage points\n\n")
+
+cat("2. lockdown threshold effect (3 weeks):\n")
+print(threshold_summary)
+
+cat("\n3. model performance:\n")
+cat("   final model adj r²:", round(model_comparison$Adj_R2[model_comparison$Model == "Final"], 3), "\n")
+cat("   improvement from baseline:", 
+    round(model_comparison$Adj_R2[model_comparison$Model == "Final"] - 
+          model_comparison$Adj_R2[model_comparison$Model == "Baseline"], 3), "\n")
+```
+
+# threshold analysis - our key substantive finding
+```{r threshold-analysis}
+# examining the 3-week lockdown threshold effect by policy approach
+
+threshold_effects <- dv_model_ready %>%
+  mutate(lockdown_duration = ifelse(lockdown_above_3weeks == 1, "Above 3 weeks", "3 weeks or less")) %>%
+  group_by(policy_approach, lockdown_duration) %>%
+  summarise(
+    n_obs = n(),
+    mean_dv_change = mean(dv_change_from_baseline, na.rm = TRUE),
+    se_dv_change = sd(dv_change_from_baseline, na.rm = TRUE) / sqrt(n()),
+    median_lockdown_weeks = median(lockdown_weeks, na.rm = TRUE),
+    
+    # economic support context
+    mean_economic_support = mean(Monthly_income_support, na.rm = TRUE),
+    
+    # health context  
+    mean_death_rate = mean(Monthly_death_rates_per_million_people, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+print("threshold effects by policy approach:")
+print(threshold_effects)
+
+# calculate the key finding: difference in dv change above vs below 3 weeks
+threshold_summary <- threshold_effects %>%
+  select(policy_approach, lockdown_duration, mean_dv_change) %>%
+  pivot_wider(names_from = lockdown_duration, values_from = mean_dv_change) %>%
+  mutate(threshold_effect = `Above 3 weeks` - `3 weeks or less`)
+
+print("threshold effect (above 3 weeks - below 3 weeks):")
+print(threshold_summary)
+
+---
