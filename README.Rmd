@@ -1,6 +1,8 @@
 ---
 title: "Domestic Violence & COVID-19 Lockdown Project"
-output: github_document
+output: 
+  github_document:
+    toc: true
 ---
 
 # 📊 Domestic Violence & COVID-19 Lockdown Impact – Cross-National Analysis
